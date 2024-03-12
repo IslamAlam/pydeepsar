@@ -74,6 +74,17 @@ docs-preview: docs-build
 build:
 	poetry build
 
+#* Installation
+.PHONY: install
+install:
+	poetry lock -n && poetry export --without-hashes > requirements.txt
+	poetry install -n
+	-poetry run mypy --install-types --non-interactive ./
+
+.PHONY: pre-commit-install
+pre-commit-install:
+	poetry run pre-commit install
+
 .PHONY:release-ci
 release-ci:
 	$(RELEASE_APP) --ci
