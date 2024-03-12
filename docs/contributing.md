@@ -2,11 +2,11 @@
 
 In order to be able to contribute, it is important that you understand
 the project layout.
-This project uses the *flat layout*, which means that the package code is located
+This project uses the _flat layout_, which means that the package code is located
 at `./pydeepsar`.
 
 For my information, check the official documentation:
-https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/
+<https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/>
 
 In addition, you should know that to build our package we use
 [Poetry](https://python-poetry.org/), it's a Python package management tool that
@@ -29,10 +29,10 @@ Report bugs at /issues.
 
 If you are reporting a bug, please include:
 
-  - Your operating system name and version.
-  - Any details about your local setup that might be helpful in
-    troubleshooting.
-  - Detailed steps to reproduce the bug.
+- Your operating system name and version.
+- Any details about your local setup that might be helpful in
+  troubleshooting.
+- Detailed steps to reproduce the bug.
 
 ### Fix Bugs
 
@@ -58,68 +58,68 @@ The best way to send feedback is to file an issue at
 
 If you are proposing a feature:
 
-  - Explain in detail how it would work.
-  - Keep the scope as narrow as possible, to make it easier to
-    implement.
-  - Remember that this is a volunteer-driven project, and that
-    contributions are welcome :)
+- Explain in detail how it would work.
+- Keep the scope as narrow as possible, to make it easier to
+  implement.
+- Remember that this is a volunteer-driven project, and that
+  contributions are welcome :)
 
-## Get Started!
+## Get Started
 
 Ready to contribute? Here’s how to set up `pydeepsar` for local development.
 
-1.  Fork the `pydeepsar` repo on GitHub.
+1. Fork the `pydeepsar` repo on GitHub.
 
-2.  Clone your fork locally::
+2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/pydeepsar.git
+   $ git clone <git@github.com>:your_name_here/pydeepsar.git
 
-3.  Install your local copy into a virtualenv. Assuming you have
-    virtualenvwrapper installed, this is how you set up your fork for
-    local development::
+3. Install your local copy into a virtualenv. Assuming you have
+   virtualenvwrapper installed, this is how you set up your fork for
+   local development::
 
-    $ mkvirtualenv pydeepsar
-    $ cd pydeepsar/
-    $ python setup.py develop
+   $ mkvirtualenv pydeepsar
+   $ cd pydeepsar/
+   $ python setup.py develop
 
-4.  Create a branch for local development::
+4. Create a branch for local development::
 
-    $ git checkout -b name-of-your-bugfix-or-feature
+   $ git checkout -b name-of-your-bugfix-or-feature
 
-    Now you can make your changes locally.
+   Now you can make your changes locally.
 
-5.  When you’re done making changes, check that your changes pass flake8
-    and the tests, including testing other Python versions with tox::
+5. When you’re done making changes, check that your changes pass flake8
+   and the tests, including testing other Python versions with tox::
 
-    $ make lint
-    $ make test
+   $ make lint
+   $ make test
 
-    To get flake8 and tox, just pip install them into your virtualenv.
+   To get flake8 and tox, just pip install them into your virtualenv.
 
-6.  Commit your changes and push your branch to GitHub::
+6. Commit your changes and push your branch to GitHub::
 
-    $ git add . $ git commit -m “Your detailed description of your
-    changes.” $ git push origin name-of-your-bugfix-or-feature
+   $ git add . $ git commit -m “Your detailed description of your
+   changes.” $ git push origin name-of-your-bugfix-or-feature
 
-7.  Submit a pull request through the GitHub website.
+7. Submit a pull request through the GitHub website.
 
 ## Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
-1.  The pull request should include tests.
-2.  If the pull request adds functionality, the docs should be updated.
-    Put your new functionality into a function with a docstring, and add
-    the feature to the list in README.rst.
-3.  The pull request should work for Python >= 3.8.
+1. The pull request should include tests.
+2. If the pull request adds functionality, the docs should be updated.
+   Put your new functionality into a function with a docstring, and add
+   the feature to the list in README.rst.
+3. The pull request should work for Python >= 3.9.
 
 ## Tips
 
 To run a subset of tests::
-```
-$ pytest tests.test_pydeepsar
-```
 
+```
+pytest tests.test_pydeepsar
+```
 
 ## Release
 
@@ -137,7 +137,7 @@ publishes the release.
 By default, **semantic-release** uses [Angular Commit Message
 Conventions](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).
 The commit message format can be changed with the `preset` or `config`
-options_ of the
+options\_ of the
 [@semantic-release/commit-analyzer](https://github.com/semantic-release/commit-analyzer#options)
 and
 [@semantic-release/release-notes-generator](https://github.com/semantic-release/release-notes-generator#options)
@@ -151,7 +151,7 @@ The table below shows which commit message gets you which release type
 when `semantic-release` runs (using the default configuration):
 
 | Commit message                                                 | Release type     |
-|----------------------------------------------------------------|------------------|
+| -------------------------------------------------------------- | ---------------- |
 | `fix(pencil): stop graphite breaking when pressure is applied` | Fix Release      |
 | `feat(pencil): add 'graphiteWidth' option`                     | Feature Release  |
 | `perf(pencil): remove graphiteWidth option`                    | Chore            |
