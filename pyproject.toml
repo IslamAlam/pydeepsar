@@ -106,6 +106,10 @@ lines-between-types = 1
 
 [tool.mypy]
 python_version = "3.11"
+files = ["pydeepsar", "tests"]
+exclude = [
+    "docs/_build",
+]
 check_untyped_defs = true
 strict = true
 ignore_missing_imports = true
