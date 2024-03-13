@@ -19,6 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    permissions:
+      # This permission is required for trusted publishing.
+      id-token: write
+      contents: read
+
     defaults:
       run:
         shell: bash -l {0}
