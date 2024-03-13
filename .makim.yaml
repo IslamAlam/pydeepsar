@@ -2,29 +2,34 @@ version: 1.0
 groups:
   clean:
     targets:
-      all:
+      tmp:
         help: Clean unnecessary temporary files
+        shell: bash
         run: |
           rm -fr build/
           rm -fr dist/
           rm -fr .eggs/
-          find . -name '*.egg-info' -exec rm -fr {} +
-          find . -name '*.egg' -exec rm -f {} +
-          find . -name '*.pyc' -exec rm -f {} +
-          find . -name
-          find . -name '__pycache__' -exec rm -fr '*.pyo' -exec rm -f {} +
-          find . -name '*~' -exec rm -f {} +{} +
           rm -f .coverage
           rm -fr htmlcov/
           rm -fr .pytest_cache
           rm -fr .mypy_cache
           rm -fr .ruff_cache
+          find . -name '*.egg-info' -exec rm -fr {} +
+          find . -name '*.egg' -exec rm -f {} +
+          find . -name '*.pyc' -exec rm -f {} +
+          find . -name
+          find . -name '__pycache__' -exec rm -fr '*.pyo' -exec rm -f {} +
+          find . -name '*.pyo' -exec rm -f {} +
+          find . -name '__pycache__' -exec rm -fr {} +
+          find . -name '*~' -exec rm -f {} +
+
 
   docs:
     targets:
       build:
         help: Build documentation
         run: |
+          rm -rf docs/_build
           sphinx-apidoc -o docs/_build pydeepsar
           python -msphinx docs/source docs/_build
 
@@ -88,7 +93,6 @@ groups:
       dry:
         help: Run semantic release in dry-run mode
         run: {{ vars.app }} --dry-run
-
       ci:
-        help: run semantic release on CI
+        help: Run semantic release in dry-run mode
         run: {{ vars.app }} --ci

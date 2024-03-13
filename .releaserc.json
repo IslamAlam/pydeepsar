@@ -8,20 +8,6 @@
       {
         "replacements": [
           {
-            "files": ["pydeepsar/__init__.py"],
-            "from": "return '.*'  # semantic-release",
-            "to": "return '${nextRelease.version}'  # semantic-release",
-            "results": [
-              {
-                "file": "pydeepsar/__init__.py",
-                "hasChanged": true,
-                "numMatches": 1,
-                "numReplacements": 1
-              }
-            ],
-            "countMatches": true
-          },
-          {
             "files": ["pyproject.toml"],
             "from": "version = \".*\"  # semantic-release",
             "to": "version = \"${nextRelease.version}\"  # semantic-release",
@@ -43,7 +29,7 @@
       "@semantic-release/changelog",
       {
         "changelogTitle": "# Release Notes\n---",
-        "changelogFile": "docs/changelog.md"
+        "changelogFile": "CHANGELOG.md"
       }
     ],
     [
@@ -62,11 +48,7 @@
     [
       "@semantic-release/git",
       {
-        "assets": [
-          "pyproject.toml",
-          "docs/changelog.md",
-          "pydeepsar/__init__.py"
-        ],
+        "assets": ["pyproject.toml", "CHANGELOG.md"],
         "message": "chore(release): ${nextRelease.version}"
       }
     ]
