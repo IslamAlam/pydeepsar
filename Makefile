@@ -17,7 +17,7 @@ PACKAGE_PATH="pydeepsar"
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = pydeepsar
-SOURCEDIR     = docs/
+SOURCEDIR     = docs/source
 BUILDDIR      = docs/_build
 
 define PRINT_HELP_PYSCRIPT
