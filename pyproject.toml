@@ -112,6 +112,9 @@ fixable = ["I001"]
 [tool.ruff.pydocstyle]
 convention = "numpy"
 
+[tool.ruff.lint.pycodestyle]
+ignore-overlong-task-comments = true
+
 [tool.ruff.isort]
 # Use a single line between direct and from import
 lines-between-types = 1

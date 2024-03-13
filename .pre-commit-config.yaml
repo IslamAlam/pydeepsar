@@ -1,109 +1,399 @@
-default_stages:
-  - commit
+---
+minimum_pre_commit_version: "2.17"
+default_stages: [commit]
+
+# Install pre-commit hooks via
+# pre-commit install
+
 repos:
+  # ----------------------------------------------
+  # Meta hooks
+  # ----------------------------------------------
+
+  - repo: meta
+    hooks:
+      - id: identity
+        stages: [commit, manual]
+      - id: check-hooks-apply
+        stages: [manual]
+      - id: check-useless-excludes
+        stages: [manual]
+
+  # ----------------------------------------------
+  # File hooks
+  # ----------------------------------------------
+
+  # file checking out-of-the-box hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: check-ast
+      - id: mixed-line-ending
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: check-json
+      - id: check-added-large-files
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        files: \.(md|rst|yml|yaml)
+        args: [--prose-wrap=preserve]
+
+  # ####################################################################################
+  #
+  #       FORMATTING
+  #
+  # ####################################################################################
+
+  # ----------------------------------------------
+  # Python
+  # ----------------------------------------------
+
+  # ruff - python linter with fixing ability
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.13
+    hooks:
+      - id: ruff
+        name: ruff (fix)
+        args:
+          [
+            "--fix-only",
+            "--show-fixes",
+            "--exit-non-zero-on-fix",
+            "--config=pyproject.toml",
+          ]
+
+  - repo: https://github.com/MarcoGorelli/cython-lint
+    rev: v0.16.0
+    hooks:
+      - id: cython-lint
+        args: [--no-pycodestyle, --max-line-length=88]
+
+  # black - python formatter
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 23.12.1
+    hooks:
+      - id: black
+        args: ["--safe"]
+
+  # blacken-docs - black for python code in docs (rst/md/tex)
+  - repo: https://github.com/asottile/blacken-docs
+    rev: 1.16.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies: [black==23.12.1]
+        exclude: ^(.github/|tests/test_cases/example_unicode.py)
+
+  # ----------------------------------------------
+  # JS / TS / HTML / CSS / MD / JSON / YAML
+  # ----------------------------------------------
+
+  # prettier - multi formatter
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+
+  # ----------------------------------------------
+  # Spelling dict
+  # ----------------------------------------------
+
+  # Custom hook as python command
+  - repo: local
+    hooks:
+      - id: sort-spelling-dicts
+        name: Sort spelling_dict.txt files
+        description: Sort spelling_dict.txt files
+        language: python
+        entry: python
+        args:
+          - "-c"
+          - |
+            import pathlib;
+            import sys;
+            p = pathlib.Path(sys.argv[1]);
+            content = p.read_text("utf-8").splitlines();
+            unique_lines = sorted(set(content));
+            final_text = "\n".join(unique_lines) + "\n";
+            p.write_text(final_text, "utf-8")
+        files: "spelling_dict.txt"
+
+  # ----------------------------------------------
+  # General (code unspecific)
+  # ----------------------------------------------
+
+  # code unspecific out-of-the-box hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
     hooks:
       - id: end-of-file-fixer
+        stages: [commit]
+      - id: trailing-whitespace
+        stages: [commit]
+
+  # ####################################################################################
+  #
+  #       LINTING
+  #
+  # ####################################################################################
+
+  # ----------------------------------------------
+  # General (code unspecific)
+  # ----------------------------------------------
+  # ruff - python linter with fixing ability
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.13
+    hooks:
+      - id: ruff
+        name: ruff (lint)
+        args: ["--config=pyproject.toml"]
+
+  # python specific out-of-the-box hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: debug-statements
+      - id: fix-encoding-pragma
+        args: ["--remove"]
+      - id: name-tests-test
+
+  # several python code regex hooks
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-blanket-type-ignore
+      - id: python-check-mock-methods
+      - id: python-no-eval
+      - id: python-no-log-warn
+
+  # Lint hooks managed via tox envs b/c they need the pkg installed
+  - repo: local
+    hooks:
+      # mypy - python type checker
+      - id: mypy
+        name: mypy
+        description: run mypy over the installed package via tox
+        entry: mypy
+        # args: ["-e", "mypy"]
+        language: python
+        # additional_dependencies: [tox]
+        types: [python]
+        pass_filenames: true
+        # require_serial: true
+      # - id: mypy
+      #   name: mypy
+      #   entry: mypy
+      #   language: system
+      #   files: "pydeepsar"
+      #   pass_filenames: true
+      #   types:
+      #     - python
+  # ----------------------------------------------
+  # Shell script
+  # ----------------------------------------------
+
+  # shellscript (via PyPI package)
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
+    hooks:
+      - id: shellcheck
+        types_or:
+          - sh
+          - shell
+          - ash
+          - bash
+          - bats
+          - dash
+          - ksh
+
+  # ----------------------------------------------
+  # reStructuredText
+  # ----------------------------------------------
+
+  # rstcheck - rst file checker
+  - repo: https://github.com/rstcheck/rstcheck
+    rev: v6.2.0
+    hooks:
+      - id: rstcheck
+        additional_dependencies: [sphinx, toml]
+        exclude: testing
+        args: ["--config", ".rstcheck.project.cfg"]
+
+  # ----------------------------------------------
+  # Markdown
+  # ----------------------------------------------
+
+  # markdownlint - md file checker
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.12.1
+    hooks:
+      - id: markdownlint-cli2
+
+  # ----------------------------------------------
+  # TOML / YAML
+  # ----------------------------------------------
+
+  # JSON specific out-of-the-box hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-toml
+      - id: check-yaml
+
+  # yamllint - yaml linter
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.33.0
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+        files: \.(py|sh|rst|yml|yaml)$
 
   - repo: local
     hooks:
-    # NOTE: This is a total unnecessary check, just used as part of the
-    #       template. Remove this after creating the template.
-    - id: check-python
-      name: check-python
-      entry: python --version
-      language: system
-      pass_filenames: no
+      - id: generate_requirements.py
+        name: generate_requirements.py
+        language: system
+        entry: python tools/generate_requirements.py
+        files: |
+          "pyproject.toml|
+          requirements/.*\\.txt|
+          tools/generate_requirements.py"
 
-    - id: black
-      name: black
-      entry: black
-      language: system
-      pass_filenames: true
-      types:
-        - python
+  # ----------------------------------------------
+  # Validate .pre-commit-hooks.yaml file
+  # ----------------------------------------------
 
-    - id: flake8
-      name: flake8
-      entry: flake8
-      language: system
-      pass_filenames: true
-      types:
-        - python
+  - repo: https://github.com/pre-commit/pre-commit
+    rev: v3.6.0
+    hooks:
+      - id: validate_manifest
 
-    - id: ruff
-      name: ruff
-      entry: ruff --fix
-      language: system
-      pass_filenames: true
-      files: "./"
-      types:
-        - python
+  - repo: local
+    hooks:
+      # NOTE: This is a total unnecessary check, just used as part of the
+      #       template. Remove this after creating the template.
+      - id: check-python
+        name: check-python
+        entry: python --version
+        language: system
+        pass_filenames: no
 
-    - id: isort
-      name: isort
-      entry: isort
-      language: system
-      pass_filenames: true
-      types:
-        - python
+      - id: black
+        name: black
+        entry: black
+        language: system
+        pass_filenames: true
+        types:
+          - python
 
-    - id: mypy
-      name: mypy
-      entry: mypy
-      language: system
-      files: "pydeepsar"
-      pass_filenames: true
-      types:
-        - python
+      # - id: flake8
+      #   name: flake8
+      #   entry: flake8
+      #   language: system
+      #   pass_filenames: true
+      #   types:
+      #     - python
 
-    - id: shellcheck
-      name: shellcheck
-      entry: shellcheck
-      language: system
-      types_or:
-        - sh
-        - shell
-        - ash
-        - bash
-        - bats
-        - dash
-        - ksh
+      # - id: ruff
+      #   name: ruff
+      #   entry: ruff --fix
+      #   language: system
+      #   pass_filenames: true
+      #   files: "./"
+      #   types:
+      #     - python
 
-    - id: bandit
-      name: bandit
-      entry: bandit
-      language: system
-      args: ['--configfile', 'pyproject.toml', '-iii', '-lll']
-      pass_filenames: true
-      types:
-        - python
+      - id: isort
+        name: isort
+        entry: isort
+        language: system
+        pass_filenames: true
+        types:
+          - python
 
-    - id: pydocstyle
-      name: pydocstyle
-      entry: pydocstyle
-      language: system
-      files: "pydeepsar"
-      pass_filenames: true
-      types:
-        - python
+      # - id: mypy
+      #   name: mypy
+      #   entry: mypy
+      #   language: system
+      #   files: "pydeepsar"
+      #   pass_filenames: true
+      #   types:
+      #     - python
 
-    - id: vulture
-      name: vulture
-      entry: vulture
-      language: system
-      files: "pydeepsar"
-      description: Find unused Python code.
-      pass_filenames: true
-      types:
-        - python
+      # - id: shellcheck
+      #   name: shellcheck
+      #   entry: shellcheck
+      #   language: system
+      #   types_or:
+      #     - sh
+      #     - shell
+      #     - ash
+      #     - bash
+      #     - bats
+      #     - dash
+      #     - ksh
 
-    - id: mccabe
-      name: mccabe
-      entry: python -m mccabe --min 10
-      language: system
-      files: "pydeepsar"
-      pass_filenames: true
-      types:
-        - python
+      - id: bandit
+        name: bandit
+        entry: bandit
+        language: system
+        args: ["--configfile", "pyproject.toml", "-iii", "-lll"]
+        pass_filenames: true
+        types:
+          - python
+
+      - id: pydocstyle
+        name: pydocstyle
+        entry: pydocstyle
+        language: system
+        files: "pydeepsar"
+        pass_filenames: true
+        types:
+          - python
+
+      - id: vulture
+        name: vulture
+        entry: vulture
+        language: system
+        files: "pydeepsar"
+        description: Find unused Python code.
+        pass_filenames: true
+        types:
+          - python
+
+      - id: mccabe
+        name: mccabe
+        entry: python -m mccabe --min 10
+        language: system
+        files: "pydeepsar"
+        pass_filenames: true
+        types:
+          - python
+
+ci:
+  # This ensures that PR's aren't autofixed by the bot, rather you call
+  # the bot to make the fix
+  autofix_prs: false
+  autofix_commit_msg: |
+    '[pre-commit.ci 🤖] Apply code format tools to PR'
+  # Update hook versions every month
+  # (so we don't get hit with weekly update PR's)
+  # Default message is more verbose
+  autoupdate_commit_msg: "[pre-commit.ci] autoupdate"
+  # Default is weekly
+  autoupdate_schedule: monthly
