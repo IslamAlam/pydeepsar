@@ -22,7 +22,6 @@ jobs:
     permissions:
       # This permission is required for trusted publishing.
       id-token: write
-      contents: read
 
     defaults:
       run:
