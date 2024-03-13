@@ -46,7 +46,7 @@ repos:
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
-        files: \.(md|rst|yml|yaml)
+        files: \.(rst|yml|yaml)
         args: [--prose-wrap=preserve]
 
   # ####################################################################################
@@ -103,6 +103,7 @@ repos:
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
+        files: \.(rst|yml|yaml)
 
   # ----------------------------------------------
   # Spelling dict
@@ -191,14 +192,14 @@ repos:
         types: [python]
         pass_filenames: true
         # require_serial: true
-      # - id: mypy
-      #   name: mypy
-      #   entry: mypy
-      #   language: system
-      #   files: "pydeepsar"
-      #   pass_filenames: true
-      #   types:
-      #     - python
+        # - id: mypy
+        #   name: mypy
+        #   entry: mypy
+        #   language: system
+        #   files: "pydeepsar"
+        #   pass_filenames: true
+        #   types:
+        #     - python
   # ----------------------------------------------
   # Shell script
   # ----------------------------------------------
@@ -228,7 +229,8 @@ repos:
       - id: rstcheck
         additional_dependencies: [sphinx, toml]
         exclude: testing
-        args: ["--config", ".rstcheck.project.cfg"]
+        # args: ["--config", ".rstcheck.project.cfg"]
+        args: ["--ignore-directives", "automodule,click,mdinclude,spelling,"]
 
   # ----------------------------------------------
   # Markdown
@@ -239,6 +241,12 @@ repos:
     rev: v0.12.1
     hooks:
       - id: markdownlint-cli2
+        files: \.(md)
+        args:
+          [
+            "-config",
+            "{MD013: {line_length: 80, code_block_line_length: 120, tables: false}}",
+          ]
 
   # ----------------------------------------------
   # TOML / YAML
@@ -256,6 +264,11 @@ repos:
     rev: v1.33.0
     hooks:
       - id: yamllint
+        args:
+          [
+            "-d",
+            "{extends: default, rules: {line-length: {max: 80, level: warning}}}",
+          ]
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.6

@@ -1,11 +1,12 @@
+---
 name: Release
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: write
@@ -25,7 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-
       - uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: "latest"
@@ -36,7 +36,6 @@ jobs:
           activate-environment: pydeepsar
           use-mamba: true
           miniforge-variant: Mambaforge
-
 
       - name: Install deps
         run: |

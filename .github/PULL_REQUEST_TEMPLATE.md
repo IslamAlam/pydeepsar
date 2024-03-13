@@ -1,4 +1,5 @@
-## Pull Request description
+# Pull Request description
+
 <!-- Describe the purpose of your PR and the changes you have made. -->
 
 <!-- Which issue this PR aims to resolve or fix? E.g.:
@@ -14,17 +15,20 @@ Solve #004
 * ...
 -->
 
-* ```...```
+- `...`
 
 <!-- Modify the options to suit your project. -->
+
 ## Pull Request checklists
 
 This PR is a:
+
 - [ ] bug-fix
 - [ ] new feature
 - [ ] maintenance
 
 About this PR:
+
 - [ ] it includes tests.
 - [ ] the tests are executed on CI.
 - [ ] the tests generate log file(s) (path).
@@ -32,6 +36,7 @@ About this PR:
 - [ ] this PR requires a project documentation update.
 
 Author's checklist:
+
 - [ ] I have reviewed the changes and it contains no misspelling.
 - [ ] The code is well commented, especially in the parts that contain more complexity.
 - [ ] New and old tests passed locally.
@@ -40,13 +45,14 @@ Author's checklist:
 
 <!-- Add any screenshot that helps to show the changes proposed -->
 
-<!-- Add any other extra information that would help to understand the changes proposed by this PR -->
+<!-- Add any other extra information that would help to understand the
+changes proposed by this PR -->
 
 ## Reviewer's checklist
 
 Copy and paste this template for your review's note:
 
-```
+```markdown
 ## Reviewer's Checklist
 
 - [ ] I managed to reproduce the problem locally from the `main` branch
