@@ -56,6 +56,7 @@ jupyterlite-pyodide-kernel = "^0.2.3"
 sphinx-rtd-theme = "^1.2.2"
 pandoc = "^2.3"
 myst-parser = "^1.0.0"
+esbonio = "^0.16.4"
 
 [tool.pytest.ini_options]
 testpaths = [
