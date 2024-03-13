@@ -26,6 +26,7 @@ groups:
         help: Build documentation
         run: |
           sphinx-apidoc -o docs/_build pydeepsar
+          python -msphinx docs/source docs/_build
 
       preview:
         help: Preview documentation page locally
