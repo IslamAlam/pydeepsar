@@ -9,15 +9,15 @@ entities.
 
 ## Summary
 
-
 DeepSAR Python package is a community-owned and community-run project.
 To the maximum extent possible, decisions about project direction are made by
 community consensus (but note that "consensus" here has a somewhat technical
-meaning that might not match everyone's expectations -- see below). Some members
-of the community additionally contribute by serving on the DeepSAR Python package steering council, where they are responsible for
+meaning that might not match everyone's expectations -- see below).
+Some members of the community additionally contribute by serving on the
+DeepSAR Python package steering council, where they are responsible for
 facilitating the establishment of community consensus, for stewarding project
-resources, and -- in extreme cases -- for making project decisions if the normal
-community-based process breaks down.
+resources, and -- in extreme cases -- for making project decisions if
+the normal community-based process breaks down.
 
 ## The Project
 
@@ -25,7 +25,7 @@ community-based process breaks down.
 
 <<DESCRIBE WHO ARE DEVELOPING THE PROJECT?>>
 
-<<DESCRIBE THE PROJECT COMMUNITY>>
+<!-- <<DESCRIBE THE PROJECT COMMUNITY>> -->
 
 ## Governance
 
@@ -34,12 +34,11 @@ Project.
 
 The foundations of Project governance are:
 
--  Openness & Transparency
--  Active Contribution
--  Institutional Neutrality
+- Openness & Transparency
+- Active Contribution
+- Institutional Neutrality
 
-Consensus-based decision making by the community
-------------------------------------------------
+## Consensus-based decision making by the community
 
 Normally, all project decisions will be made by consensus of all
 interested Contributors. The primary goal of this approach is to ensure
@@ -60,9 +59,9 @@ for a more detailed discussion.
 
 In this context, consensus does *not* require:
 
--  that we wait to solicit everybody's opinion on every change,
--  that we ever hold a vote on anything,
--  or that everybody is happy or agrees with every decision.
+- that we wait to solicit everybody's opinion on every change,
+- that we ever hold a vote on anything,
+- or that everybody is happy or agrees with every decision.
 
 For us, what consensus means is that we entrust *everyone* with the
 right to veto any change if they feel it necessary. While this may sound
@@ -89,16 +88,16 @@ comment on the mailing list after a few days, then it's probably fine. And worst
 case, if a change is more controversial than expected, or a crucial critique is
 delayed because someone was on vacation, then it's no big deal: we apologize for
 misjudging the situation, `back up, and sort things out
-<http://producingoss.com/en/producingoss.html#version-control-relaxation>`_.
+<http://producingoss.com/en/producingoss.html#version-control-relaxation>`\_.
 
 If one does need to invoke a formal veto, then it should consist of:
 
--  an unambiguous statement that a veto is being invoked,
--  an explanation of why it is being invoked, and
--  a description of what conditions (if any) would convince the vetoer
-   to withdraw their veto.
+- an unambiguous statement that a veto is being invoked,
+- an explanation of why it is being invoked, and
+- a description of what conditions (if any) would convince the vetoer
+  to withdraw their veto.
 
-If all proposals for resolving some issue are vetoed, then the status
+If all proposals for resolving some issues are vetoed, then the status
 quo wins by default.
 
 In the worst case, if a Contributor is genuinely misusing their veto in
@@ -128,32 +127,32 @@ potentially less experienced contributors.
 The Steering Council and its Members play a special role in certain
 situations. In particular, the Council may, if necessary:
 
--  Make decisions about the overall scope, vision and direction of the
-   project.
--  Make decisions about strategic collaborations with other
-   organizations or individuals.
--  Make decisions about specific technical issues, features, bugs and
-   pull requests. They are the primary mechanism of guiding the code
-   review process and merging pull requests.
--  Make decisions about the Services that are run by The Project and
-   manage those Services for the benefit of the Project and Community.
--  Update policy documents such as this one.
--  Make decisions when regular community discussion doesn’t produce
-   consensus on an issue in a reasonable time frame.
+- Make decisions about the overall scope, vision and direction of the
+  project.
+- Make decisions about strategic collaborations with other
+  organizations or individuals.
+- Make decisions about specific technical issues, features, bugs and
+  pull requests. They are the primary mechanism of guiding the code
+  review process and merging pull requests.
+- Make decisions about the Services that are run by The Project and
+  manage those Services for the benefit of the Project and Community.
+- Update policy documents such as this one.
+- Make decisions when regular community discussion doesn’t produce
+  consensus on an issue in a reasonable time frame.
 
 However, the Council's primary responsibility is to facilitate the
-ordinary community-based decision making procedure described above. If
+ordinary community-based decision-making procedure described above. If
 we ever have to step in and formally override the community for the
 health of the Project, then we will do so, but we will consider reaching
 this point to indicate a failure in our leadership.
 
-### Council decision making
+### Council decision-making
 
 If it becomes necessary for the Steering Council to produce a formal
 decision, then they will use a form of the `Apache Foundation voting
-process <https://www.apache.org/foundation/voting.html>`_. This is a
+process <https://www.apache.org/foundation/voting.html>`\_. This is a
 formalized version of consensus, in which +1 votes indicate agreement,
--1 votes are vetoes (and must be accompanied with a rationale, as
+-1 votes are vetoes (and must be accompanied by a rationale, as
 above), and one can also vote fractionally (e.g. -0.5, +0.5) if one
 wishes to express an opinion without registering a full veto. These
 numeric votes are also often used informally as a way of getting a
@@ -169,7 +168,8 @@ In practice, we anticipate that for most Steering Council decisions
 ### Council membership
 
 A list of current Steering Council Members is maintained at the
-page <<INDICATE WHERE TO FIND Steering Council Members>>
+page
+<!-- <<INDICATE WHERE TO FIND Steering Council Members>> -->
 
 To become eligible to join the Steering Council, an individual must be a Project
 Contributor who has produced contributions that are substantial in quality and
@@ -209,7 +209,6 @@ deemed to be actively harmful to the project’s well-being, and attempts
 at communication and conflict resolution have failed. This requires the
 consensus of the remaining Members.
 
-
 ### Conflict of interest
 
 It is expected that the Council Members will be employed at a wide range
@@ -217,11 +216,11 @@ of companies, universities and non-profit organizations. Because of
 this, it is possible that Members will have conflict of interests. Such
 conflict of interests include, but are not limited to:
 
--  Financial interests, such as investments, employment or contracting
-   work, outside of The Project that may influence their work on The
-   Project.
--  Access to proprietary information of their employer that could
-   potentially leak into their work with the Project.
+- Financial interests, such as investments, employment or contracting
+  work, outside of The Project that may influence their work on The
+  Project.
+- Access to proprietary information of their employer that could
+  potentially leak into their work with the Project.
 
 All members of the Council shall disclose to the rest of the Council any
 conflict of interest they may have. Members with a conflict of interest
@@ -294,29 +293,29 @@ money from private foundations and donors or a for-profit company building
 proprietary products and services that leverage Project Software and Services.
 Funding acquired by Institutional Partners to work on The Project is called
 Institutional Funding. However, no funding obtained by an Institutional Partner
-can override the Steering Council. If a Partner has funding to do DeepSAR Python package work and the Council decides to not pursue that
-work as a project, the Partner is free to pursue it on their own. However in
-this situation, that part of the Partner’s work will not be under the DeepSAR Python package umbrella and cannot use the Project trademarks in a
-way that suggests a formal relationship.
+can override the Steering Council. If a Partner has funding to do
+DeepSAR Python package work and the Council decides to not pursue that
+work as a project, the Partner is free to pursue it on their own.
+However, in this situation, that part of the Partner’s work will not
+be under the DeepSAR Python package umbrella and cannot use the
+Project trademarks in a way that suggests a formal relationship.
 
 Institutional Partner benefits are:
 
--  Acknowledgement on the DeepSAR Python package websites, in talks and T-shirts.
--  Ability to acknowledge their own funding sources on the DeepSAR Python package
-   websites, in talks and T-shirts.
--  Ability to influence the project through the participation of their
-   Council Member.
--  Council Members invited to DeepSAR Python package Developer Meetings.
+- Acknowledgement on the DeepSAR Python package websites, in talks and T-shirts.
+- Ability to acknowledge their own funding sources on the DeepSAR Python package
+  websites, in talks and T-shirts.
+- Ability to influence the project through the participation of their
+  Council Member.
+- Council Members invited to DeepSAR Python package Developer Meetings.
 
-<<ADD A LINK TO YOUR CURRENT LIST OF PARTNERS>>
-
+<!-- <<ADD A LINK TO YOUR CURRENT LIST OF PARTNERS>> -->
 
 ## Acknowledgements
 
 Substantial portions of this document were adapted from the
 [NumPy project governance and decision-making](https://numpy.org/doc/stable/dev/governance/governance.html)
 
-License
-=======
+## License
 
-<<ADD THE LICENSE FROM https://creativecommons.org >>
+<<ADD THE LICENSE FROM <https://creativecommons.org> >>

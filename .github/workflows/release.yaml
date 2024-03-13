@@ -1,16 +1,19 @@
+---
 name: Release
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: write
   issues: write
   pull-requests: write
+  # This permission is required for trusted publishing.
+  id-token: write
 
 jobs:
   release:
@@ -25,7 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-
       - uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: "latest"
@@ -36,7 +38,6 @@ jobs:
           activate-environment: pydeepsar
           use-mamba: true
           miniforge-variant: Mambaforge
-
 
       - name: Install deps
         run: |
@@ -49,13 +50,17 @@ jobs:
         run: |
           makim release.dry
 
+      - name: Mint token
+        id: mint
+        uses: tschm/token-mint-action@v1.0.3
+
       - name: Release command
         if: ${{ github.event_name == 'workflow_dispatch' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
-          poetry config pypi-token.pypi ${PYPI_TOKEN}
+          poetry config pypi-token.pypi '${{ steps.mint.outputs.api-token }}'
           makim release.ci
 
       - name: Generate documentation with changes from semantic-release

@@ -17,11 +17,12 @@ PACKAGE_PATH="pydeepsar"
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = pydeepsar
-SOURCEDIR     = docs/
+SOURCEDIR     = docs/source
 BUILDDIR      = docs/_build
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
+
 
 for line in sys.stdin:
 	match = re.match(r'^([a-zA-Z_-]+):.*?## (.*)$$', line)
@@ -73,6 +74,17 @@ docs-preview: docs-build
 .PHONY:build
 build:
 	poetry build
+
+#* Installation
+.PHONY: install
+install:
+	poetry lock -n && poetry export --without-hashes > requirements.txt
+	poetry install -n
+	-poetry run mypy --install-types --non-interactive ./
+
+.PHONY: pre-commit-install
+pre-commit-install:
+	poetry run pre-commit install
 
 .PHONY:release-ci
 release-ci:

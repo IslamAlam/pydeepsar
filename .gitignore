@@ -67,6 +67,8 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+docs/jupyter_execute
+docs/source/.jupyterlite.doit.db
 
 # pyenv
 .python-version

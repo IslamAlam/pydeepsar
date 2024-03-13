@@ -2,8 +2,8 @@
 
 This Project aims to ...
 
-* Free software: GNU General Public License v3
-* Documentation: https://islamalam.github.io/pydeepsar
+- Free software: GNU General Public License v3
+- Documentation: <https://islamalam.github.io/pydeepsar>
 
 ## Features
 

@@ -13,7 +13,7 @@ Welcome to DeepSAR Python package's documentation!
    Example <example>
    contributing
    changelog
-   
+
 
 Indices and tables
 ==================

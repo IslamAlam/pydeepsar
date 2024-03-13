@@ -84,10 +84,10 @@ groups:
         semantic-release
 
     targets:
+      dry:
+        help: Run semantic release in dry-run mode
+        run: {{ vars.app }} --dry-run
+
       ci:
         help: run semantic release on CI
         run: {{ vars.app }} --ci
-
-      dry:
-        help: run semantic release in dry-run mode
-        run: {{ vars.app }} --dry-run
