@@ -10,5 +10,5 @@ def response_pytest() -> bool:
 
 def test_content_pytest() -> bool:
     """Test with pytest."""
-    assert 3+1 == 2+2
-    return 3+1 == 2+2
+    assert 3 + 1 == 2 + 2
+    return 3 + 1 == 2 + 2
