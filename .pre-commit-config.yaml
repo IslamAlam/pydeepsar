@@ -37,8 +37,6 @@ repos:
       - id: destroyed-symlinks
       - id: check-ast
       - id: mixed-line-ending
-      - id: check-yaml
-        args: [--allow-multiple-documents]
       - id: check-json
       - id: check-added-large-files
 
@@ -46,6 +44,7 @@ repos:
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
+        exclude: ^(.github/|.makim.yaml)
         files: \.(rst|yml|yaml)
         args: [--prose-wrap=preserve]
 
@@ -104,6 +103,7 @@ repos:
     hooks:
       - id: prettier
         files: \.(rst|yml|yaml)
+        exclude: ^(.github/|.makim.yaml)
 
   # ----------------------------------------------
   # Spelling dict
@@ -258,12 +258,15 @@ repos:
     hooks:
       - id: check-toml
       - id: check-yaml
+        args: [--allow-multiple-documents]
+        exclude: ^(.github/|.makim.yaml)
 
   # yamllint - yaml linter
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.33.0
     hooks:
       - id: yamllint
+        exclude: ^(.github/|.makim.yaml)
         args:
           [
             "-d",
