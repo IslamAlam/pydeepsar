@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydeepsar"
-version = "1.0.1"  # semantic-release
+version = "1.0.2"  # semantic-release
 description = "This Project aims to ..."
 authors = ["Islam Mansour <is3mansour@gmail.com>"]
 packages = [
@@ -66,6 +66,7 @@ pandoc = "^2.3"
 myst-parser = "^1.0.0"
 esbonio = "^0.16.4"
 sphinx-autoapi = "^3.0.0"
+sphinx-autobuild = "^2024.2.4"
 
 [tool.pytest.ini_options]
 testpaths = [
@@ -94,7 +95,7 @@ targets = "./"
 [tool.vulture]
 exclude = ["tests"]
 ignore_decorators = []
-ignore_names = []
+ignore_names = ["visit_*", "log*", "**kwargs"]
 make_whitelist = true
 min_confidence = 80
 paths = ["./"]
