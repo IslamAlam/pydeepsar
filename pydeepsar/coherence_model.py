@@ -4,19 +4,22 @@ Module for computing coherence measures using TensorFlow.
 This module provides functions for computing coherence measures
 using TensorFlow, a popular deep learning framework.
 
-Classes:
-    CoherenceLayer: A TensorFlow layer for computing coherence measures.
-
-Functions:
-    compute_coherence: Compute coherence measures using TensorFlow.
 
 """
+
 # %%
+
 from typing import Any, Callable
+
+import tensorflow as tf
+
+from keras.src.backend.common.variables import ALLOWED_DTYPES
+
+ALLOWED_DTYPES.add("complex128")
+ALLOWED_DTYPES.add("complex64")
 
 # import numpy as np
 # import numpy.typing as npt
-import tensorflow as tf
 
 # -> Type[tf.keras.layers.Layer]
 
@@ -77,8 +80,8 @@ class IntegrateSimpsonsRule(tf.keras.layers.Layer):  # type: ignore[misc]
         """
         super(IntegrateSimpsonsRule, self).__init__(**kwargs)
         self.func = func
-        if num_intervals <= 0:
-            raise ValueError("Number of intervals must be positive.")
+        if not isinstance(num_intervals, int) or num_intervals <= 0:
+            raise ValueError("Number of intervals must be a positive integer.")
         self.num_intervals = num_intervals
 
     def call(self, inputs: tf.Tensor, **kwargs: Any) -> tf.Tensor:
@@ -149,7 +152,7 @@ class IntegrateDiscreteSimpsonsRule(tf.keras.layers.Layer):  # type: ignore[misc
     >>> inputs = [x_values, y_values]
     >>> result = layer(inputs)
     >>> print(result)
-    tf.Tensor(1.3333334, shape=(), dtype=float32)
+    tf.Tensor(1.3333335, shape=(), dtype=float32)
     """  # noqa: E501
 
     def __init__(self, **kwargs: Any):
@@ -178,20 +181,28 @@ class IntegrateDiscreteSimpsonsRule(tf.keras.layers.Layer):  # type: ignore[misc
         x_values, y_values = inputs
 
         # Calculate step size based on x_values
-        h = (x_values[-1] - x_values[0]) / tf.cast(
-            tf.shape(x_values)[0] - 1, dtype=tf.float32
+        h = (x_values[..., -1] - x_values[..., 0]) / tf.cast(
+            tf.shape(x_values)[-1] - 1, dtype=tf.float32
         )
 
         # Simpson's rule calculation
-        sum_y_odd = tf.reduce_sum(y_values[1::2])
-        sum_y_even = tf.reduce_sum(y_values[2:-1:2])
+        sum_y_odd = tf.reduce_sum(y_values[..., 1::2], axis=[-1])
+        sum_y_even = tf.reduce_sum(y_values[..., 2:-1:2], axis=[-1])
 
         integral = (
             h
             / 3
-            * (y_values[0] + 4.0 * sum_y_odd + 2.0 * sum_y_even + y_values[-1])
+            * (
+                y_values[..., 0]
+                + 4.0 * sum_y_odd
+                + 2.0 * sum_y_even
+                + y_values[..., -1]
+            )
         )
 
+        # Reshape the output to have shape (None, 1)
+        integral = tf.expand_dims(integral, axis=-1)
+        # print("integral (shape): ", integral.shape)
         return integral
 
 
@@ -219,7 +230,7 @@ class ComplexIntegrateDiscreteSimpsonsRule(tf.keras.layers.Layer):  # type: igno
     >>> inputs = [x_values, y_values]
     >>> result = layer(inputs)
     >>> print(result)
-    tf.Tensor((1.3333334+0j), shape=(), dtype=complex64)
+    tf.Tensor([3.3333335+0.j], shape=(), dtype=complex64)
     """  # noqa: E501
 
     def __init__(self, **kwargs: Any):
@@ -286,15 +297,15 @@ class ComplexCoherenceEstimatorLayer(tf.keras.layers.Layer):  # type: ignore[mis
     Examples
     --------
     >>> layer = ComplexCoherenceEstimatorLayer()
-    >>> z_values = tf.constant([1, 2, 3])
-    >>> func_z_values = tf.constant([2, 3, 4])
+    >>> z_values = tf.constant([1.0, 2.0, 3.0])
+    >>> func_z_values = tf.constant([2.0, 3.0, 4.0])
     >>> kappa_z = tf.constant(0.5)
     >>> kappa_z_vol = tf.constant(0.8)
     >>> z0 = tf.constant(1.2)
     >>> inputs = [z_values, func_z_values, kappa_z, kappa_z_vol, z0]
     >>> result = layer(inputs)
     >>> print(result)
-    <tf.Tensor: shape=(), dtype=complex64, numpy=(0.9877519+0.15643446j)>
+    tf.Tensor([-0.5934472+0.67985195j], shape=(1,), dtype=complex64)
     """  # noqa: E501
 
     def __init__(self, **kwargs: Any):
@@ -426,7 +437,7 @@ class PhaseEstimationLayer(tf.keras.layers.Layer):  # type: ignore[misc]
     >>> inputs = tf.constant([1+1j, -1-1j])
     >>> result = layer(inputs)
     >>> print(result)
-    tf.Tensor([ 0.7853982 -2.3561945], shape=(2,), dtype=float32)
+    tf.Tensor([ 0.78539816 -2.35619449], shape=(2,), dtype=float64)
     """
 
     def __init__(self, **kwargs: Any):
@@ -528,12 +539,12 @@ class PhaseCenterDepthEstimationLayer(tf.keras.layers.Layer):  # type: ignore[mi
     --------
     >>> import tensorflow as tf
     >>> layer = PhaseCenterDepthEstimationLayer()
-    >>> gamma = tf.constant([0.5+0.5j, -0.5-0.5j])
+    >>> gamma = tf.constant([0.5+0.5j, -0.5-0.5j], dtype=tf.complex64)
     >>> kappa_z_vol = tf.constant(0.1)
     >>> inputs = [gamma, kappa_z_vol]
     >>> result = layer(inputs)
     >>> print(result)
-    tf.Tensor([ 7.8539815 -7.8539815], shape=(2,), dtype=float32)
+    tf.Tensor([  7.853982 -23.561945], shape=(2,), dtype=float32)
     """  # noqa: E501
 
     def __init__(self, **kwargs: Any):
@@ -646,7 +657,7 @@ class UVLayer(tf.keras.layers.Layer):  # type: ignore[misc]
     >>> inputs = [z, m1, kappa_e, theta_r]
     >>> result = layer(inputs)
     >>> print(result)
-    tf.Tensor([1.0214052 1.0426943], shape=(2,), dtype=float32)
+    tf.Tensor([0.5205099 1.130252 ], shape=(2,), dtype=float32)
     """  # noqa: E501
 
     def __init__(self, **kwargs: Any):
@@ -759,7 +770,7 @@ class WeibullLayer(tf.keras.layers.Layer):  # type: ignore[misc]
     >>> inputs = [z, lambda_w, k_w]
     >>> result = layer(inputs)
     >>> print(result)
-    tf.Tensor([0.18051676 0.06593975], shape=(2,), dtype=float32)
+    tf.Tensor([-0.19800997  1.0234487 ], shape=(2,), dtype=float32)
     """
 
     def __init__(self, **kwargs: Any):
@@ -805,7 +816,7 @@ class LinspaceLayer(tf.keras.layers.Layer):  # type: ignore[misc]
         The start value of the linspace.
     b : tf.constant
         The end value of the linspace.
-    num_intervals : tf.int
+    num_intervals : int
         The number of intervals to generate.
     **kwargs : Any, optional
         Additional options for the base Layer class.
@@ -813,12 +824,21 @@ class LinspaceLayer(tf.keras.layers.Layer):  # type: ignore[misc]
     Raises
     ------
     ValueError
-        If the number of intervals is not positive.
+        If the number of intervals is not a positive integer.
 
     Returns
     -------
     tf.Tensor
         The generated linearly spaced vector.
+
+    Examples
+    --------
+    >>> import tensorflow as tf
+    >>> layer = LinspaceLayer(a=0, b=1, num_intervals=10)
+    >>> result = layer(inputs=None)
+    >>> print(result)
+    tf.Tensor([0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1. ], shape=(11,),
+        dtype=float32)
 
     """
 
@@ -826,7 +846,7 @@ class LinspaceLayer(tf.keras.layers.Layer):  # type: ignore[misc]
         self,
         a: tf.constant,
         b: tf.constant,
-        num_intervals: tf.int,
+        num_intervals: int,
         **kwargs: Any,
     ):
         """Initialize the LinspaceLayer.
@@ -845,12 +865,12 @@ class LinspaceLayer(tf.keras.layers.Layer):  # type: ignore[misc]
         Raises
         ------
         ValueError
-            If the number of intervals is not positive.
+            If the number of intervals is not a positive integer.
 
         """
         super(LinspaceLayer, self).__init__(**kwargs)
-        if tf.math.less_equal(num_intervals, 0):
-            raise ValueError("Number of intervals must be positive.")
+        if not isinstance(num_intervals, int) or num_intervals <= 0:
+            raise ValueError("Number of intervals must be a positive integer.")
         self.a = a
         self.b = b
         self.num_intervals = num_intervals
@@ -871,6 +891,130 @@ class LinspaceLayer(tf.keras.layers.Layer):  # type: ignore[misc]
         """
         z_value = tf.linspace(self.a, self.b, self.num_intervals + 1)
         return z_value
+
+
+class BetweenConstraint(tf.keras.constraints.Constraint):  # type: ignore[misc]
+    """Constrain the weights to be between a minimum and maximum value.
+
+    This constraint clips the weights to be between a specified minimum
+    and maximum value.
+
+    Parameters
+    ----------
+    min_value : float, optional
+        The minimum allowed value for the weights (default is 0).
+    max_value : float, optional
+        The maximum allowed value for the weights (default is 50).
+
+    Returns
+    -------
+    tf.Tensor
+        The clipped weights.
+
+    Examples
+    --------
+    >>> constraint = BetweenConstraint(min_value=0, max_value=50)
+    >>> weights = tf.constant([-10.0, 25.0, 60.0])
+    >>> constrained_weights = constraint(weights)
+    >>> print(constrained_weights)
+    tf.Tensor([ 0. 25. 50.], shape=(3,), dtype=float32)
+
+    """
+
+    def __init__(
+        self,
+        min_value: float = 0,
+        max_value: float = 50,
+        **kwargs: Any,
+    ) -> None:
+        """Initialize the BetweenConstraint.
+
+        Parameters
+        ----------
+        min_value : float, optional
+            The minimum allowed value for the weights (default is 0).
+        max_value : float, optional
+            The maximum allowed value for the weights (default is 50).
+
+        """
+        self.min_value = min_value
+        self.max_value = max_value
+
+    def __call__(self, w: tf.Tensor) -> tf.Tensor:
+        """Clip the weights to be between min_value and max_value.
+
+        Parameters
+        ----------
+        w : tf.Tensor
+            The weights to be clipped.
+
+        Returns
+        -------
+        tf.Tensor
+            The clipped weights.
+
+        """
+        return tf.clip_by_value(w, self.min_value, self.max_value)
+
+    def get_config(self) -> dict[str, float]:
+        """Get the configuration of the constraint.
+
+        Returns
+        -------
+        dict
+            A dictionary containing the configuration of the constraint.
+
+        """
+        return {"min_value": self.min_value, "max_value": self.max_value}
+
+
+class AbsoluteValueLayer(tf.keras.layers.Layer):  # type: ignore[misc]
+    """Layer to compute the absolute value of the input tensor.
+
+    This layer computes the absolute value of the input tensor element-wise.
+
+    Returns
+    -------
+    tf.Tensor
+        The absolute value of the input tensor.
+
+    Examples
+    --------
+    >>> import tensorflow as tf
+    >>> layer = AbsoluteValueLayer()
+    >>> input_tensor = tf.constant([-2.5, 3.0, -4.2])
+    >>> output_tensor = layer(input_tensor)
+    >>> print(output_tensor)
+    tf.Tensor([2.5 3.  4.2], shape=(3,), dtype=float32)
+
+    """
+
+    def __init__(self, **kwargs: Any):
+        """Initialize the AbsoluteValueLayer.
+
+        Parameters
+        ----------
+        **kwargs : Any, optional
+            Additional options for the base Layer class.
+
+        """
+        super(AbsoluteValueLayer, self).__init__(**kwargs)
+
+    def call(self, inputs: tf.Tensor, **kwargs: Any) -> tf.Tensor:
+        """Compute the absolute value of the input tensor.
+
+        Parameters
+        ----------
+        inputs : tf.Tensor
+            The input tensor.
+
+        Returns
+        -------
+        tf.Tensor
+            The absolute value of the input tensor.
+
+        """
+        return tf.abs(inputs)
 
 
 # %%

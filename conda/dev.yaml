@@ -3,10 +3,11 @@ name: pydeepsar
 channels:
   - conda-forge
 dependencies:
-  - python >=3.9.1,<4
+  - python >=3.9.1,<3.12
   - pip
   - poetry
   - nodejs # used by semantic-release
   - shellcheck
   - pandoc
+  - pydot
   - make

@@ -62,28 +62,19 @@ repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.1.13
     hooks:
+      # Run the linter.
       - id: ruff
         name: ruff (fix)
-        args:
-          [
-            "--fix-only",
-            "--show-fixes",
-            "--exit-non-zero-on-fix",
-            "--config=pyproject.toml",
-          ]
+        args: [--fix]
+      # Run the formatter.
+      - id: ruff-format
+        name: ruff (formatter)
 
   - repo: https://github.com/MarcoGorelli/cython-lint
     rev: v0.16.0
     hooks:
       - id: cython-lint
         args: [--no-pycodestyle, --max-line-length=88]
-
-  # black - python formatter
-  - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 23.12.1
-    hooks:
-      - id: black
-        args: ["--safe"]
 
   # blacken-docs - black for python code in docs (rst/md/tex)
   - repo: https://github.com/asottile/blacken-docs
@@ -242,6 +233,7 @@ repos:
     hooks:
       - id: markdownlint-cli2
         files: \.(md)
+        exclude: ^(CHANGELOG.md)
         args:
           [
             "-config",
@@ -334,14 +326,6 @@ repos:
       #   types:
       #     - python
 
-      - id: isort
-        name: isort
-        entry: isort
-        language: system
-        pass_filenames: true
-        types:
-          - python
-
       # - id: mypy
       #   name: mypy
       #   entry: mypy
@@ -369,15 +353,6 @@ repos:
         entry: bandit
         language: system
         args: ["--configfile", "pyproject.toml", "-iii", "-lll"]
-        pass_filenames: true
-        types:
-          - python
-
-      - id: pydocstyle
-        name: pydocstyle
-        entry: pydocstyle
-        language: system
-        files: "pydeepsar"
         pass_filenames: true
         types:
           - python

@@ -41,7 +41,11 @@ extensions = [
     'matplotlib.sphinxext.plot_directive',
     'myst_nb',
     'jupyterlite_sphinx',
+    'autoapi.extension',
 ]
+
+autoapi_dirs = ['../../pydeepsar']
+autoapi_root =  'api'
 
 nbsphinx_allow_errors = True
 
@@ -75,12 +79,12 @@ release = pydeepsar.__version__
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", ".ipynb_checkpoints"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", ".ipynb_checkpoints", "*.ipynb", "api_/**", ]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
@@ -89,6 +93,9 @@ pygments_style = "sphinx"
 todo_include_todos = False
 
 
+sphinx_gallery_conf = {
+    "backreferences_dir": "api",
+}
 # -- Options for HTML output -------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -107,9 +114,24 @@ html_theme = "pydata_sphinx_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ["_static"]
 
+
 html_logo = "./images/logo.png"
+
+html_sidebars = {
+    "index": "search-button-field",
+    "**": ["search-button-field", "sidebar-nav-bs"]
+}
+
 html_theme_options = {
     'logo_only': False,
+    "github_url": "https://github.com/IslamAlam/pydeepsar",
+    "header_links_before_dropdown": 6,
+    "icon_links": [],
+    "navbar_start": ["navbar-logo", "version-switcher"],
+    "navbar_persistent": [],
+    "show_version_warning_banner": True,
+    "secondary_sidebar_items": ["page-toc"],
+
 }
 
 
@@ -174,3 +196,22 @@ texinfo_documents = [
      "One line description of project.",
      "Miscellaneous"),
 ]
+
+# -----------------------------------------------------------------------------
+# Intersphinx configuration
+# -----------------------------------------------------------------------------
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None),
+    'numpy': ('https://numpy.org/devdocs', None),
+    'neps': ('https://numpy.org/neps', None),
+    'matplotlib': ('https://matplotlib.org/stable', None),
+    'asv': ('https://asv.readthedocs.io/en/stable/', None),
+    'statsmodels': ('https://www.statsmodels.org/stable', None),
+}
+
+
+# -----------------------------------------------------------------------------
+# Autosummary
+# -----------------------------------------------------------------------------
+
+autosummary_generate = True
