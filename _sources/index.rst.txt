@@ -9,7 +9,7 @@ Welcome to DeepSAR Python package's documentation!
 
    Introduction <readme>
    installation
-   api/references
+   api/index
    Example <example>
    contributing
    changelog

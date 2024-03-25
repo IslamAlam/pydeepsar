@@ -1,0 +1,106 @@
+:py:mod:`pydeepsar`
+===================
+
+.. py:module:: pydeepsar
+
+.. autoapi-nested-parse::
+
+   
+   DeepSAR Python package.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   __main__/index.rst
+   cli/index.rst
+   coherence_model/index.rst
+   pydeepsar/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.get_version
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.version
+   pydeepsar.__version__
+   pydeepsar.__author__
+   pydeepsar.__email__
+
+
+.. py:function:: get_version() -> str
+
+   
+   Return the program version.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:data:: version
+
+   
+
+.. py:data:: __version__
+
+   
+
+.. py:data:: __author__
+   :value: 'Islam Mansour'
+
+   
+
+.. py:data:: __email__
+   :value: 'is3mansour@gmail.com'
+
+   
+

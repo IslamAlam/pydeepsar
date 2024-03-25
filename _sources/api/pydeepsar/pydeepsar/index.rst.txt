@@ -1,0 +1,13 @@
+:py:mod:`pydeepsar.pydeepsar`
+=============================
+
+.. py:module:: pydeepsar.pydeepsar
+
+.. autoapi-nested-parse::
+
+   Main module.
+
+   ..
+       !! processed by numpydoc !!
+
+

@@ -1,0 +1,49 @@
+:py:mod:`pydeepsar.cli`
+=======================
+
+.. py:module:: pydeepsar.cli
+
+.. autoapi-nested-parse::
+
+   a python cli command to be updated for training and inference.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.cli.main
+
+
+
+.. py:function:: main(option: str) -> None
+
+   
+   Your main function logic here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

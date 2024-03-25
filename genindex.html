@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; DeepSAR Python package 1.0.0 documentation</title>
+    <title>Index &#8212; DeepSAR Python package 1.0.1 documentation</title>
   
   
   
@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
     <link rel="stylesheet" type="text/css" href="_static/jupyterlite_sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -125,11 +126,35 @@
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="DeepSAR Python package 1.0.0 documentation - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="DeepSAR Python package 1.0.0 documentation - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="DeepSAR Python package 1.0.1 documentation - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="DeepSAR Python package 1.0.1 documentation - Home"/>`);</script>
   
   
 </a></div>
+    
+      <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
     
   </div>
   
@@ -156,15 +181,8 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="api/references.html">
-                        API references
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="example.html">
-                        Example
+                      <a class="nav-link nav-internal" href="api/index.html">
+                        API Reference
                       </a>
                     </li>
                 
@@ -175,21 +193,13 @@
                       </a>
                     </li>
                 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
+
                     <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+                      <a class="nav-link nav-internal" href="changelog.html">
                         Release Notes
                       </a>
                     </li>
                 
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -197,20 +207,6 @@
     
     
     <div class="navbar-header-items__end">
-      
-        <div class="navbar-item navbar-persistent--container">
-          
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
-        </div>
       
       
         <div class="navbar-item">
@@ -225,23 +221,26 @@ document.write(`
 `);
 </script></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IslamAlam/pydeepsar" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
   
-  
-    <div class="navbar-persistent--mobile">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
-    </div>
   
 
   
@@ -257,7 +256,7 @@ document.write(`
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -285,15 +284,8 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="api/references.html">
-                        API references
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="example.html">
-                        Example
+                      <a class="nav-link nav-internal" href="api/index.html">
+                        API Reference
                       </a>
                     </li>
                 
@@ -304,21 +296,13 @@ document.write(`
                       </a>
                     </li>
                 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
+
                     <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+                      <a class="nav-link nav-internal" href="changelog.html">
                         Release Notes
                       </a>
                     </li>
                 
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
         
@@ -340,9 +324,39 @@ document.write(`
 `);
 </script></div>
         
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IslamAlam/pydeepsar" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
       </div>
     
   </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+    </div>
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
@@ -371,15 +385,137 @@ document.write(`
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#G"><strong>G</strong></a>
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  
 </div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/index.html#pydeepsar.__author__">__author__ (in module pydeepsar)</a>
+</li>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.BetweenConstraint.__call__">__call__() (pydeepsar.coherence_model.BetweenConstraint method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/index.html#pydeepsar.__email__">__email__ (in module pydeepsar)</a>
+</li>
+      <li><a href="api/pydeepsar/index.html#pydeepsar.__version__">__version__ (in module pydeepsar)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.AbsoluteValueLayer">AbsoluteValueLayer (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.AmplitudeEstimationLayer">AmplitudeEstimationLayer (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.BetweenConstraint">BetweenConstraint (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.AbsoluteValueLayer.call">call() (pydeepsar.coherence_model.AbsoluteValueLayer method)</a>
+
+      <ul>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.AmplitudeEstimationLayer.call">(pydeepsar.coherence_model.AmplitudeEstimationLayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.call">(pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule.call">(pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.EstimateKappaELayer.call">(pydeepsar.coherence_model.EstimateKappaELayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule.call">(pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.IntegrateSimpsonsRule.call">(pydeepsar.coherence_model.IntegrateSimpsonsRule method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.LinspaceLayer.call">(pydeepsar.coherence_model.LinspaceLayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer.call">(pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.PhaseEstimationLayer.call">(pydeepsar.coherence_model.PhaseEstimationLayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.UniformVolumeLayer.call">(pydeepsar.coherence_model.UniformVolumeLayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.UVLayer.call">(pydeepsar.coherence_model.UVLayer method)</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.WeibullLayer.call">(pydeepsar.coherence_model.WeibullLayer method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer">ComplexCoherenceEstimatorLayer (class in pydeepsar.coherence_model)</a>
+</li>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule">ComplexIntegrateDiscreteSimpsonsRule (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.EstimateKappaELayer">EstimateKappaELayer (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/references.html#pydeepsar.get_version">get_version() (in module pydeepsar)</a>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.BetweenConstraint.get_config">get_config() (pydeepsar.coherence_model.BetweenConstraint method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/index.html#pydeepsar.get_version">get_version() (in module pydeepsar)</a>, <a href="api/references.html#pydeepsar.get_version">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_den">integrand_den() (pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer method)</a>
+</li>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_num">integrand_num() (pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule">IntegrateDiscreteSimpsonsRule (class in pydeepsar.coherence_model)</a>
+</li>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.IntegrateSimpsonsRule">IntegrateSimpsonsRule (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.LinspaceLayer">LinspaceLayer (class in pydeepsar.coherence_model)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -387,13 +523,21 @@ document.write(`
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/cli/index.html#pydeepsar.cli.main">main() (in module pydeepsar.cli)</a>
+</li>
       <li>
     module
 
       <ul>
-        <li><a href="api/references.html#module-pydeepsar">pydeepsar</a>
+        <li><a href="api/pydeepsar/index.html#module-pydeepsar">pydeepsar</a>, <a href="api/references.html#module-pydeepsar">[1]</a>
 </li>
-        <li><a href="api/references.html#module-pydeepsar.pydeepsar">pydeepsar.pydeepsar</a>
+        <li><a href="api/pydeepsar/__main__/index.html#module-pydeepsar.__main__">pydeepsar.__main__</a>
+</li>
+        <li><a href="api/pydeepsar/cli/index.html#module-pydeepsar.cli">pydeepsar.cli</a>
+</li>
+        <li><a href="api/pydeepsar/coherence_model/index.html#module-pydeepsar.coherence_model">pydeepsar.coherence_model</a>
+</li>
+        <li><a href="api/pydeepsar/pydeepsar/index.html#module-pydeepsar.pydeepsar">pydeepsar.pydeepsar</a>, <a href="api/references.html#module-pydeepsar.pydeepsar">[1]</a>
 </li>
       </ul></li>
   </ul></td>
@@ -402,22 +546,75 @@ document.write(`
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer">PhaseCenterDepthEstimationLayer (class in pydeepsar.coherence_model)</a>
+</li>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.PhaseEstimationLayer">PhaseEstimationLayer (class in pydeepsar.coherence_model)</a>
+</li>
       <li>
     pydeepsar
 
       <ul>
-        <li><a href="api/references.html#module-pydeepsar">module</a>
+        <li><a href="api/pydeepsar/index.html#module-pydeepsar">module</a>, <a href="api/references.html#module-pydeepsar">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    pydeepsar.__main__
+
+      <ul>
+        <li><a href="api/pydeepsar/__main__/index.html#module-pydeepsar.__main__">module</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    pydeepsar.cli
+
+      <ul>
+        <li><a href="api/pydeepsar/cli/index.html#module-pydeepsar.cli">module</a>
+</li>
+      </ul></li>
+      <li>
+    pydeepsar.coherence_model
+
+      <ul>
+        <li><a href="api/pydeepsar/coherence_model/index.html#module-pydeepsar.coherence_model">module</a>
+</li>
+      </ul></li>
+      <li>
     pydeepsar.pydeepsar
 
       <ul>
-        <li><a href="api/references.html#module-pydeepsar.pydeepsar">module</a>
+        <li><a href="api/pydeepsar/pydeepsar/index.html#module-pydeepsar.pydeepsar">module</a>, <a href="api/references.html#module-pydeepsar.pydeepsar">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.UniformVolumeLayer">UniformVolumeLayer (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.UVLayer">UVLayer (class in pydeepsar.coherence_model)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/index.html#pydeepsar.version">version (in module pydeepsar)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pydeepsar/coherence_model/index.html#pydeepsar.coherence_model.WeibullLayer">WeibullLayer (class in pydeepsar.coherence_model)</a>
+</li>
   </ul></td>
 </tr></table>
 

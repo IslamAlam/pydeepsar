@@ -4,10 +4,18 @@ pydeepsar package
 Submodules
 ----------
 
-pydeepsar.coherence module
---------------------------
+pydeepsar.cli module
+--------------------
 
-.. automodule:: pydeepsar.coherence
+.. automodule:: pydeepsar.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pydeepsar.coherence\_model module
+---------------------------------
+
+.. automodule:: pydeepsar.coherence_model
    :members:
    :undoc-members:
    :show-inheritance:

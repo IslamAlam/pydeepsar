@@ -1,0 +1,1149 @@
+:py:mod:`pydeepsar.coherence_model`
+===================================
+
+.. py:module:: pydeepsar.coherence_model
+
+.. autoapi-nested-parse::
+
+   Module for computing coherence measures using TensorFlow.
+
+   This module provides functions for computing coherence measures
+   using TensorFlow, a popular deep learning framework.
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.coherence_model.IntegrateSimpsonsRule
+   pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule
+   pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule
+   pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer
+   pydeepsar.coherence_model.PhaseEstimationLayer
+   pydeepsar.coherence_model.AmplitudeEstimationLayer
+   pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer
+   pydeepsar.coherence_model.EstimateKappaELayer
+   pydeepsar.coherence_model.UVLayer
+   pydeepsar.coherence_model.UniformVolumeLayer
+   pydeepsar.coherence_model.WeibullLayer
+   pydeepsar.coherence_model.LinspaceLayer
+   pydeepsar.coherence_model.BetweenConstraint
+   pydeepsar.coherence_model.AbsoluteValueLayer
+
+
+
+
+.. py:class:: IntegrateSimpsonsRule(func: Callable[[tensorflow.Tensor], tensorflow.Tensor], num_intervals: int = 1000, **kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Numerically integrate a function using Simpson's Rule.
+
+   This layer numerically integrates a function using Simpson's Rule method.
+
+   :param func: The function to be integrated.
+   :type func: Callable[[tf.Tensor], tf.Tensor]
+   :param num_intervals: Number of intervals for integration. Defaults to 1000.
+   :type num_intervals: int, optional
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The approximate integral of the given function.
+   :rtype: tf.Tensor
+
+   :raises ValueError: If the number of intervals is not positive.
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> import numpy as np
+   >>> def func(x):
+   ...     return tf.sin(x)
+   >>> layer = IntegrateSimpsonsRule(func=func)
+   >>> inputs = tf.constant([0.0, np.pi])
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor(2.0, shape=(), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Perform numerical integration using Simpson's Rule.
+
+      :param inputs: A tensor containing the integration limits [a, b].
+      :type inputs: tf.Tensor
+
+      :returns: The approximate integral of the given function over the specified interval.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: IntegrateDiscreteSimpsonsRule(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Numerically integrate discrete data using Simpson's Rule.
+
+   This layer numerically integrates discrete data using Simpson's Rule method.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The approximate integral of the given discrete data.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = IntegrateDiscreteSimpsonsRule()
+   >>> x_values = tf.constant([0.0, 1.0, 2.0])
+   >>> y_values = tf.constant([1.0, 2.0, 1.0])
+   >>> inputs = [x_values, y_values]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor(1.3333335, shape=(), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Perform numerical integration using Simpson's Rule for discrete data.
+
+      :param inputs: A tensor containing the x and y values of discrete data points.
+      :type inputs: tf.Tensor
+
+      :returns: The approximate integral of the given discrete data.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: ComplexIntegrateDiscreteSimpsonsRule(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Perform complex integration of discrete data using Simpson's Rule.
+
+   This layer performs complex integration of discrete data using Simpson's Rule method.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The complex integral of the given discrete data.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = ComplexIntegrateDiscreteSimpsonsRule()
+   >>> x_values = tf.constant([0.0, 1.0, 2.0])
+   >>> y_values = tf.constant([1.0, 2.0, 1.0])
+   >>> inputs = [x_values, y_values]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([3.3333335+0.j], shape=(), dtype=complex64)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Perform complex integration using Simpson's Rule for discrete data.
+
+      :param inputs: A tensor containing the x and y values of discrete data points.
+      :type inputs: tf.Tensor
+
+      :returns: The complex integral of the given discrete data.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: ComplexCoherenceEstimatorLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Estimate complex coherence using Simpson's Rule with discrete data points.
+
+   This layer estimates complex coherence using Simpson's Rule with discrete data points.
+
+   :param inputs: A tensor containing z_values, func_z_values, kappa_z, kappa_z_vol, and z0.
+   :type inputs: tf.Tensor
+
+   :returns: The estimated complex coherence.
+   :rtype: tf.Tensor
+
+   :raises ValueError: If the input data is not in the expected format.
+
+   .. rubric:: Examples
+
+   >>> layer = ComplexCoherenceEstimatorLayer()
+   >>> z_values = tf.constant([1.0, 2.0, 3.0])
+   >>> func_z_values = tf.constant([2.0, 3.0, 4.0])
+   >>> kappa_z = tf.constant(0.5)
+   >>> kappa_z_vol = tf.constant(0.8)
+   >>> z0 = tf.constant(1.2)
+   >>> inputs = [z_values, func_z_values, kappa_z, kappa_z_vol, z0]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([-0.5934472+0.67985195j], shape=(1,), dtype=complex64)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: integrand_num(z: tensorflow.Tensor, f: tensorflow.Tensor, kappa_z_vol: tensorflow.Tensor) -> tensorflow.Tensor
+
+      
+      Define the integrand for the numerator of gamma.
+
+      :param z: Integration variable.
+      :type z: tf.Tensor
+      :param f: Function f(z).
+      :type f: tf.Tensor
+      :param kappa_z_vol: Parameter kappa_z_vol.
+      :type kappa_z_vol: tf.Tensor
+
+      :returns: Value of the integrand for the numerator.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: integrand_den(z: tensorflow.Tensor, f: tensorflow.Tensor) -> tensorflow.Tensor
+
+      
+      Define the integrand for the denominator of gamma.
+
+      :param z: Integration variable.
+      :type z: tf.Tensor
+      :param f: Function f(z).
+      :type f: tf.Tensor
+
+      :returns: Value of the integrand for the denominator.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Perform the complex coherence estimation.
+
+      :param inputs: A tensor containing z_values, func_z_values, kappa_z, kappa_z_vol, and z0.
+      :type inputs: tf.Tensor
+
+      :returns: The estimated complex coherence.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: PhaseEstimationLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Estimate the phase angle of complex input.
+
+   This layer estimates the phase angle of the complex input.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The phase angle of the complex input.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = PhaseEstimationLayer()
+   >>> inputs = tf.constant([1+1j, -1-1j])
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([ 0.78539816 -2.35619449], shape=(2,), dtype=float64)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Estimate the phase angle of complex input.
+
+      :param inputs: The complex input.
+      :type inputs: tf.Tensor
+
+      :returns: The phase angle of the complex input.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: AmplitudeEstimationLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Estimate the amplitude of complex input.
+
+   This layer estimates the amplitude of the complex input.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The amplitude of the complex input.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = AmplitudeEstimationLayer()
+   >>> inputs = tf.constant([1+1j, -1-1j])
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([1.4142135 1.4142135], shape=(2,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Estimate the amplitude of complex input.
+
+      :param inputs: The complex input.
+      :type inputs: tf.Tensor
+
+      :returns: The amplitude of the complex input.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: PhaseCenterDepthEstimationLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Estimate the phase center depth using complex coherence and kappa_z_vol.
+
+   This layer estimates the phase center depth using complex coherence and kappa_z_vol.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The estimated phase center depth.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = PhaseCenterDepthEstimationLayer()
+   >>> gamma = tf.constant([0.5+0.5j, -0.5-0.5j], dtype=tf.complex64)
+   >>> kappa_z_vol = tf.constant(0.1)
+   >>> inputs = [gamma, kappa_z_vol]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([  7.853982 -23.561945], shape=(2,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor) -> tensorflow.Tensor
+
+      
+      Estimate the phase center depth.
+
+      :param inputs: A tensor containing the complex coherence gamma and kappa_z_vol.
+      :type inputs: tf.Tensor
+
+      :returns: The estimated phase center depth.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: EstimateKappaELayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Estimate kappa_e using theta_r and d_pen.
+
+   This layer estimates kappa_e using theta_r and d_pen.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The estimated kappa_e.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = EstimateKappaELayer()
+   >>> theta_r = tf.constant([0.1, 0.2])
+   >>> d_pen = tf.constant([0.5, 1.0])
+   >>> inputs = [theta_r, d_pen]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([1.9800678 1.0      ], shape=(2,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Estimate kappa_e.
+
+      :param inputs: A tensor containing theta_r and d_pen.
+      :type inputs: tf.Tensor
+
+      :returns: The estimated kappa_e.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: UVLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Compute the f(z) using a Uniform Volume (UV) model.
+
+   This layer computes the f(z) using a Uniform Volume (UV) model based on the input parameters.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The computed f(z).
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = UVLayer()
+   >>> z = tf.constant([0.1, 0.2])
+   >>> m1 = tf.constant([0.5, 1.0])
+   >>> kappa_e = tf.constant([0.2, 0.3])
+   >>> theta_r = tf.constant([0.1, 0.2])
+   >>> inputs = [z, m1, kappa_e, theta_r]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([0.5205099 1.130252 ], shape=(2,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Compute the f(z) using a Uniform Volume (UV) model.
+
+      :param inputs: A tensor containing z, m1, kappa_e, and theta_r.
+      :type inputs: tf.Tensor
+
+      :returns: The computed UV field.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: UniformVolumeLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Compute the f(z) using a Uniform Volume model.
+
+   This layer computes the f(z) using a Uniform Volume model based on the input parameters.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The computed f(z).
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = UniformVolumeLayer()
+   >>> z = tf.constant([0.1, 0.2])
+   >>> d_pen = tf.constant([0.5, 1.0])
+   >>> inputs = [z, d_pen]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([1.2214028 1.4918247], shape=(2,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Compute the f(z) using a Uniform Volume model.
+
+      :param inputs: A tensor containing z and d_pen.
+      :type inputs: tf.Tensor
+
+      :returns: The computed f(z).
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: WeibullLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Compute the Weibull distribution.
+
+   This layer computes the Weibull distribution based on the input parameters.
+
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: keyword arguments, optional
+
+   :returns: The computed Weibull distribution.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = WeibullLayer()
+   >>> z = tf.constant([0.1, 0.2])
+   >>> lambda_w = tf.constant([1.0, 2.0])
+   >>> k_w = tf.constant([2.0, 3.0])
+   >>> inputs = [z, lambda_w, k_w]
+   >>> result = layer(inputs)
+   >>> print(result)
+   tf.Tensor([-0.19800997  1.0234487 ], shape=(2,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Compute the Weibull distribution.
+
+      :param inputs: A tensor containing z, lambda_w, and k_w.
+      :type inputs: tf.Tensor
+
+      :returns: The computed Weibull distribution.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: LinspaceLayer(a: tensorflow.constant, b: tensorflow.constant, num_intervals: int, **kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Generate a linearly spaced vector.
+
+   This layer generates a linearly spaced vector between two given values.
+
+   :param a: The start value of the linspace.
+   :type a: tf.constant
+   :param b: The end value of the linspace.
+   :type b: tf.constant
+   :param num_intervals: The number of intervals to generate.
+   :type num_intervals: int
+   :param \*\*kwargs: Additional options for the base Layer class.
+   :type \*\*kwargs: Any, optional
+
+   :raises ValueError: If the number of intervals is not a positive integer.
+
+   :returns: The generated linearly spaced vector.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = LinspaceLayer(a=0, b=1, num_intervals=10)
+   >>> result = layer(inputs=None)
+   >>> print(result)
+   tf.Tensor([0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1. ], shape=(11,),
+       dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Generate a linearly spaced vector.
+
+      :param inputs: Input tensor (unused).
+      :type inputs: tf.Tensor
+
+      :returns: The generated linearly spaced vector.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: BetweenConstraint(min_value: float = 0, max_value: float = 50, **kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.constraints.Constraint`
+
+   
+   Constrain the weights to be between a minimum and maximum value.
+
+   This constraint clips the weights to be between a specified minimum
+   and maximum value.
+
+   :param min_value: The minimum allowed value for the weights (default is 0).
+   :type min_value: float, optional
+   :param max_value: The maximum allowed value for the weights (default is 50).
+   :type max_value: float, optional
+
+   :returns: The clipped weights.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> constraint = BetweenConstraint(min_value=0, max_value=50)
+   >>> weights = tf.constant([-10.0, 25.0, 60.0])
+   >>> constrained_weights = constraint(weights)
+   >>> print(constrained_weights)
+   tf.Tensor([ 0. 25. 50.], shape=(3,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: __call__(w: tensorflow.Tensor) -> tensorflow.Tensor
+
+      
+      Clip the weights to be between min_value and max_value.
+
+      :param w: The weights to be clipped.
+      :type w: tf.Tensor
+
+      :returns: The clipped weights.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: get_config() -> dict[str, float]
+
+      
+      Get the configuration of the constraint.
+
+      :returns: A dictionary containing the configuration of the constraint.
+      :rtype: dict
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: AbsoluteValueLayer(**kwargs: Any)
+
+
+   Bases: :py:obj:`tensorflow.keras.layers.Layer`
+
+   
+   Layer to compute the absolute value of the input tensor.
+
+   This layer computes the absolute value of the input tensor element-wise.
+
+   :returns: The absolute value of the input tensor.
+   :rtype: tf.Tensor
+
+   .. rubric:: Examples
+
+   >>> import tensorflow as tf
+   >>> layer = AbsoluteValueLayer()
+   >>> input_tensor = tf.constant([-2.5, 3.0, -4.2])
+   >>> output_tensor = layer(input_tensor)
+   >>> print(output_tensor)
+   tf.Tensor([2.5 3.  4.2], shape=(3,), dtype=float32)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: call(inputs: tensorflow.Tensor, **kwargs: Any) -> tensorflow.Tensor
+
+      
+      Compute the absolute value of the input tensor.
+
+      :param inputs: The input tensor.
+      :type inputs: tf.Tensor
+
+      :returns: The absolute value of the input tensor.
+      :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
