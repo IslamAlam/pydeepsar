@@ -7,10 +7,18 @@ using TensorFlow, a popular deep learning framework.
 
 """
 
+# %%
+
 from typing import Optional
 
 import numpy as np
 import pandas as pd
+import tensorflow as tf
+
+from pydeepsar.models.layers import (
+    ComplexCoherenceEstimatorLayer,
+    UniformVolumeLayer,
+)
 
 
 def create_model_input_output(
@@ -100,3 +108,125 @@ def create_model_input_output(
                 )
 
     return X, y
+
+
+class CoherenceIceModel:
+    """Class for creating a model for coherence estimation in ice.
+
+    This class creates a TensorFlow model for estimating coherence in \
+        ice based on the provided inputs.
+
+    Attributes
+    ----------
+    d_pen_input : tf.Tensor
+        The input tensor for the parameter d_pen.
+    output_Profile : tf.Tensor
+        The output tensor from the UniformVolumeLayer.
+    model_UV : tf.keras.Model
+        The TensorFlow model for the uniform volume layer.
+    kappa_z_input : tf.Tensor
+        The input tensor for the parameter kappa_z.
+    kappa_z_vol_input : tf.Tensor
+        The input tensor for the parameter kappa_z_vol.
+    z0_input : tf.Tensor
+        The input tensor for the parameter z0.
+    combined_input : List[tf.Tensor]
+        The combined input tensors for the coherence model.
+    inputsCohModel : List[tf.Tensor]
+        The input tensors for the coherence model.
+    coh_est : tf.Tensor
+        The output tensor from the ComplexCoherenceEstimatorLayer.
+    model : tf.keras.Model
+        The complete TensorFlow model for coherence estimation in ice.
+
+    Methods
+    -------
+    create_UV_model()
+        Create the model for the uniform volume layer.
+    create_coherence_model()
+        Create the model for coherence estimation.
+    plot_model()
+        Plot the architecture of the coherence model.
+
+    Examples
+    --------
+    # Create an instance of CoherenceIceModel
+    ice_model = CoherenceIceModel()
+
+    # Plot the architecture of the coherence model
+    ice_model.plot_model()
+    """
+
+    def __init__(self) -> None:
+        self.d_pen_input: Optional[tf.Tensor] = None
+        self.output_Profile: Optional[tf.Tensor] = None
+        self.model_UV: Optional[tf.keras.Model] = None
+        self.kappa_z_input: Optional[tf.Tensor] = None
+        self.kappa_z_vol_input: Optional[tf.Tensor] = None
+        self.z0_input: Optional[tf.Tensor] = None
+        self.combined_input: Optional[tf.Tensor] = None
+        self.inputsCohModel: Optional[tf.Tensor] = None
+        self.coh_est: Optional[tf.Tensor] = None
+        self.model: Optional[tf.keras.Model] = None
+
+        self.create_UV_model()
+        self.create_coherence_model()
+
+    def create_UV_model(self) -> None:
+        """Create the model for the uniform volume layer."""
+        self.d_pen_input = tf.keras.Input(shape=(1,), name="d_pen")
+        z_input = tf.keras.Input(shape=(None,), name="z")
+        self.output_Profile = UniformVolumeLayer(
+            name="UniformVolumeModelProfile"
+        )([z_input, self.d_pen_input])
+        self.model_UV = tf.keras.Model(
+            inputs=[z_input, self.d_pen_input], outputs=self.output_Profile
+        )
+
+    def create_coherence_model(self) -> tf.keras.Model:
+        """Create the model for coherence estimation."""
+        self.kappa_z_input = tf.keras.Input(shape=(1,), name="kappa_z")
+        self.kappa_z_vol_input = tf.keras.Input(shape=(1,), name="kappa_z_vol")
+        self.z0_input = tf.keras.Input(shape=(1,), name="z0")
+
+        self.combined_input = [
+            self.model_UV.input[0],  # type: ignore[union-attr]
+            self.d_pen_input,
+            self.kappa_z_input,
+            self.kappa_z_vol_input,
+            self.z0_input,
+        ]
+        self.inputsCohModel = [
+            self.model_UV.input[0],  # type: ignore[union-attr]
+            self.output_Profile,
+            self.kappa_z_input,
+            self.kappa_z_vol_input,
+            self.z0_input,
+        ]
+
+        self.coh_est = ComplexCoherenceEstimatorLayer(name="ComplexCoherence")(
+            self.inputsCohModel
+        )
+
+        self.model = tf.keras.Model(
+            inputs=self.combined_input, outputs=self.coh_est
+        )
+
+        return self.model
+
+    def plot_model(self) -> None:
+        """Plot the architecture of the coherence model."""
+        tf.keras.utils.plot_model(
+            self.model,
+            show_shapes=True,
+            show_dtype=True,
+            show_layer_names=True,
+            rankdir="TB",
+            expand_nested=True,
+            dpi=300,
+            show_layer_activations=True,
+            show_trainable=True,
+        )
+
+
+# %%
