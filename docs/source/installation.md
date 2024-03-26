@@ -28,7 +28,7 @@ git clone https://github.com/IslamAlam/pydeepsar
 ```
 
 Or download the
-[tarball](/tarball/main):
+[tarball](https://github.com/IslamAlam/pydeepsar/releases/latest):
 
 ```bash
 curl -OJL /tarball/main
