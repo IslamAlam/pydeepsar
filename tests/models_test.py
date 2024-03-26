@@ -7,7 +7,6 @@ from typing import Any, Callable, Tuple
 
 import numpy as np
 import numpy.typing as npt
-import pytest
 
 from scipy.integrate import quad
 
@@ -216,8 +215,7 @@ def estimate_kappa_e(theta_r: np.float64, d_pen: np.float64) -> np.float64:
 # %%
 
 
-@pytest.fixture
-def response_coherence() -> bool:
+def test_response_coherence() -> bool:  # type: ignore[return]
     """Sample pytest fixture."""
     # Example usage:
     # Initialize variables as numpy arrays
@@ -258,10 +256,5 @@ def response_coherence() -> bool:
 
     ice_model = CoherenceIceModel()
 
-    if ice_model is not None:
-        gamma_tf = ice_model.model.predict(X)  # type: ignore[union-attr]
-        assert np.allclose(gamma_tf, gamma)
-    else:
-        raise ValueError("Failed to create CoherenceIceModel instance")
-
-    return np.allclose(gamma_tf, gamma)
+    gamma_tf = ice_model.model.predict(X)  # type: ignore[union-attr]
+    assert np.allclose(gamma_tf, gamma)

@@ -1,4 +1,5 @@
 """Tests for pydeepsar package."""
+
 import pytest
 
 
@@ -8,7 +9,6 @@ def response_pytest() -> bool:
     return True
 
 
-def test_content_pytest() -> bool:
+def test_content_pytest() -> bool:  # type: ignore[return]
     """Test with pytest."""
     assert 3 + 1 == 2 + 2
-    return 3 + 1 == 2 + 2
