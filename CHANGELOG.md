@@ -1,6 +1,16 @@
 # Release Notes
 ---
 
+## [1.0.3](https://github.com/IslamAlam/pydeepsar/compare/1.0.2...1.0.3) (2024-03-26)
+
+
+### Bug Fixes
+
+* **add-coherence-model:** build ([992f44c](https://github.com/IslamAlam/pydeepsar/commit/992f44c2ed8dcc830b91eef977505d0bb1e182aa))
+* **add-coherence-test:** build ([57e1058](https://github.com/IslamAlam/pydeepsar/commit/57e105837192e3bede68ff7b30de9e0f63cc181a))
+* **fix-test:** build ([3423ef6](https://github.com/IslamAlam/pydeepsar/commit/3423ef6351891ebd9437372a065d363d5bbd16f4))
+* **model:** build ([9ed15a8](https://github.com/IslamAlam/pydeepsar/commit/9ed15a84dffbcc40bfae08e1d6a719c806ea8513))
+
 ## [1.0.2](https://github.com/IslamAlam/pydeepsar/compare/1.0.1...1.0.2) (2024-03-25)
 
 
