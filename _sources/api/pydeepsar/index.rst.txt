@@ -27,6 +27,17 @@
        !! processed by numpydoc !!
 
 
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   io/index.rst
+   models/index.rst
+   util/index.rst
+
+
 Submodules
 ----------
 .. toctree::
@@ -35,7 +46,6 @@ Submodules
 
    __main__/index.rst
    cli/index.rst
-   coherence_model/index.rst
    pydeepsar/index.rst
 
 

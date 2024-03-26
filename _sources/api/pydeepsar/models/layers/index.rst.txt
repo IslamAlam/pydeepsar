@@ -1,13 +1,13 @@
-:py:mod:`pydeepsar.coherence_model`
-===================================
+:py:mod:`pydeepsar.models.layers`
+=================================
 
-.. py:module:: pydeepsar.coherence_model
+.. py:module:: pydeepsar.models.layers
 
 .. autoapi-nested-parse::
 
-   Module for computing coherence measures using TensorFlow.
+   Module for adding advanced layers to Keras.
 
-   This module provides functions for computing coherence measures
+   This module provides layers for computing coherence measures
    using TensorFlow, a popular deep learning framework.
 
 
@@ -23,20 +23,20 @@ Classes
 
 .. autoapisummary::
 
-   pydeepsar.coherence_model.IntegrateSimpsonsRule
-   pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule
-   pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule
-   pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer
-   pydeepsar.coherence_model.PhaseEstimationLayer
-   pydeepsar.coherence_model.AmplitudeEstimationLayer
-   pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer
-   pydeepsar.coherence_model.EstimateKappaELayer
-   pydeepsar.coherence_model.UVLayer
-   pydeepsar.coherence_model.UniformVolumeLayer
-   pydeepsar.coherence_model.WeibullLayer
-   pydeepsar.coherence_model.LinspaceLayer
-   pydeepsar.coherence_model.BetweenConstraint
-   pydeepsar.coherence_model.AbsoluteValueLayer
+   pydeepsar.models.layers.IntegrateSimpsonsRule
+   pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule
+   pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule
+   pydeepsar.models.layers.ComplexCoherenceEstimatorLayer
+   pydeepsar.models.layers.PhaseEstimationLayer
+   pydeepsar.models.layers.AmplitudeEstimationLayer
+   pydeepsar.models.layers.PhaseCenterDepthEstimationLayer
+   pydeepsar.models.layers.EstimateKappaELayer
+   pydeepsar.models.layers.UVLayer
+   pydeepsar.models.layers.UniformVolumeLayer
+   pydeepsar.models.layers.WeibullLayer
+   pydeepsar.models.layers.LinspaceLayer
+   pydeepsar.models.layers.BetweenConstraint
+   pydeepsar.models.layers.AbsoluteValueLayer
 
 
 

@@ -1,0 +1,38 @@
+:py:mod:`pydeepsar.io`
+======================
+
+.. py:module:: pydeepsar.io
+
+.. autoapi-nested-parse::
+
+   
+   Module for managing geospatial data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   xr/index.rst
+
+

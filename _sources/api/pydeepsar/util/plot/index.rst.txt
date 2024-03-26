@@ -1,0 +1,93 @@
+:py:mod:`pydeepsar.util.plot`
+=============================
+
+.. py:module:: pydeepsar.util.plot
+
+.. autoapi-nested-parse::
+
+   Provides functions for plotting data.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.util.plot.plot_x_y
+   pydeepsar.util.plot.plot_complex_polar
+
+
+
+.. py:function:: plot_x_y(x: numpy.typing.NDArray[Union[numpy.float32, numpy.float64]], y: numpy.typing.NDArray[Union[numpy.float32, numpy.float64]], label: Optional[str] = None, ax: Optional[matplotlib.axes.Axes] = None) -> matplotlib.axes.Axes
+
+   
+   Plot the relationship between x and y values.
+
+   :param x: Array of x values.
+   :type x: array-like
+   :param y: Array of y values.
+   :type y: array-like
+   :param label: Label for the plotted line.
+   :type label: str, optional
+   :param ax: The axis to plot on. If None, a new figure and axis will be created.
+   :type ax: matplotlib.axes.Axes, optional
+
+   :returns: The axis object.
+   :rtype: matplotlib.axes.Axes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: plot_complex_polar(z: numpy.typing.NDArray[Union[numpy.complex64, numpy.complex128]], label: Optional[str] = None, ax: Optional[matplotlib.axes.Axes] = None) -> matplotlib.axes.Axes
+
+   
+   Plot a complex number on a polar plot.
+
+   :param complex_number: The complex number to be plotted.
+   :type complex_number: complex
+   :param label: The label for the plotted point. Default is None.
+   :type label: str, optional
+   :param ax: The axis to plot on. If None, a new figure and axis will be created.
+   :type ax: matplotlib.axes.Axes, optional
+
+   :returns: The axis object.
+   :rtype: matplotlib.axes.Axes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

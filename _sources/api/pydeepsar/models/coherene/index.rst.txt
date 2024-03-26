@@ -1,0 +1,258 @@
+:py:mod:`pydeepsar.models.coherene`
+===================================
+
+.. py:module:: pydeepsar.models.coherene
+
+.. autoapi-nested-parse::
+
+   Module for computing coherence measures using TensorFlow.
+
+   This module provides functions for computing coherence measures
+   using TensorFlow, a popular deep learning framework.
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.models.coherene.CoherenceIceModel
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.models.coherene.create_model_input_output
+
+
+
+.. py:function:: create_model_input_output(dataframe: pandas.DataFrame, output: Optional[dict[str, str]] = None) -> tuple[dict[str, int], dict[str, int]]
+
+   
+   Create input X with z_repeated and z0_tensor.
+
+   :param dataframe: The DataFrame containing the input data.
+   :type dataframe: pandas.DataFrame
+   :param output: Dictionary containing the output column names as keys.
+   :type output: dict, optional
+
+   :returns: Tuple containing the inputs dictionary and optional output dictionary.
+   :rtype: tuple
+
+   .. rubric:: Examples
+
+   >>> import pandas as pd
+   >>> import numpy as np
+   >>> # Create a sample DataFrame
+   >>> df = pd.DataFrame({
+   ...     'geo_kz_ml': [0.1, 0.2, 0.3],
+   ...     'geo_thetainc_ml': [0.2, 0.3, 0.4],
+   ...     'geo_amp': [0.5, 0.6, 0.7],
+   ...     'geo_coh': [0.8, 0.9, 1.0],
+   ...     'geo_pha': [1.1, 1.2, 1.3],
+   ... })
+   >>> # Create output dictionary
+   >>> output_dict = {'output1': 'humidity', 'output2': 'wind_speed'}
+   >>> X, y = create_model_input_output(df, output_dict)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:class:: CoherenceIceModel
+
+
+   
+   Class for creating a model for coherence estimation in ice.
+
+   This class creates a TensorFlow model for estimating coherence in         ice based on the provided inputs.
+
+   .. attribute:: d_pen_input
+
+      The input tensor for the parameter d_pen.
+
+      :type: tf.Tensor
+
+   .. attribute:: output_Profile
+
+      The output tensor from the UniformVolumeLayer.
+
+      :type: tf.Tensor
+
+   .. attribute:: model_UV
+
+      The TensorFlow model for the uniform volume layer.
+
+      :type: tf.keras.Model
+
+   .. attribute:: kappa_z_input
+
+      The input tensor for the parameter kappa_z.
+
+      :type: tf.Tensor
+
+   .. attribute:: kappa_z_vol_input
+
+      The input tensor for the parameter kappa_z_vol.
+
+      :type: tf.Tensor
+
+   .. attribute:: z0_input
+
+      The input tensor for the parameter z0.
+
+      :type: tf.Tensor
+
+   .. attribute:: combined_input
+
+      The combined input tensors for the coherence model.
+
+      :type: List[tf.Tensor]
+
+   .. attribute:: inputsCohModel
+
+      The input tensors for the coherence model.
+
+      :type: List[tf.Tensor]
+
+   .. attribute:: coh_est
+
+      The output tensor from the ComplexCoherenceEstimatorLayer.
+
+      :type: tf.Tensor
+
+   .. attribute:: model
+
+      The complete TensorFlow model for coherence estimation in ice.
+
+      :type: tf.keras.Model
+
+   .. method:: create_UV_model()
+
+      Create the model for the uniform volume layer.
+
+   .. method:: create_coherence_model()
+
+      Create the model for coherence estimation.
+
+   .. method:: plot_model()
+
+      Plot the architecture of the coherence model.
+
+   .. rubric:: Examples
+
+   # Create an instance of CoherenceIceModel
+   ice_model = CoherenceIceModel()
+
+   # Plot the architecture of the coherence model
+   ice_model.plot_model()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: create_UV_model() -> None
+
+      
+      Create the model for the uniform volume layer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: create_coherence_model() -> tensorflow.keras.Model
+
+      
+      Create the model for coherence estimation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: plot_model() -> None
+
+      
+      Plot the architecture of the coherence model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

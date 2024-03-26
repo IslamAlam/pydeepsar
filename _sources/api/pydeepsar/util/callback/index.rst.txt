@@ -1,0 +1,333 @@
+:py:mod:`pydeepsar.util.callback`
+=================================
+
+.. py:module:: pydeepsar.util.callback
+
+.. autoapi-nested-parse::
+
+   The module provides several callbacks during training.
+
+   The module provides several TensorFlow callbacks for visualizing and logging
+   layer outputs during model training.
+
+
+   Classes:
+       - PrintLayerValuesCallback: Callback to print the output values of         specific layers at the end of each epoch.
+       - PlotLayerImageCallback: Callback to plot and save images of specific         layers at the end of each epoch.
+       - LogFiguresCallback: Callback to log figures of specific layers at         the end of each epoch.
+
+   Functions:
+       - plot_to_image: Convert a matplotlib figure to a TensorFlow image tensor.
+
+   Dependencies:
+       - io
+       - Any
+       - List
+       - matplotlib.pyplot
+       - numpy
+       - pandas
+       - tensorflow
+       - matplotlib.figure.Figure
+
+   .. rubric:: Example
+
+   ```python
+   from datetime import datetime
+   import io
+
+   import tensorflow as tf
+   from tensorflow import keras
+
+   import matplotlib.pyplot as plt
+   import numpy as np
+
+   logdir = "logs/image/" + datetime.now().strftime("%Y%m%d-%H%M%S")
+   # Define the basic TensorBoard callback.
+   tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir)
+   file_writer_figures = tf.summary.create_file_writer(logdir + "/figures")
+   callback = LogFiguresCallback(dataset, file_writer_figures)
+   model.fit(x_train, y_train, epochs=10, callbacks=[callback])
+   ```
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.util.callback.PrintLayerValuesCallback
+   pydeepsar.util.callback.PlotLayerImageCallback
+   pydeepsar.util.callback.LogFiguresCallback
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pydeepsar.util.callback.plot_to_image
+
+
+
+.. py:class:: PrintLayerValuesCallback(inputs: tensorflow.Tensor, layer_names: Optional[List[str]] = None)
+
+
+   Bases: :py:obj:`tensorflow.keras.callbacks.Callback`
+
+   
+   Callback to print layer outputs at the end of epochs.
+
+   This callback prints the output values of specific layers of the model         at the end of each epoch during training.
+
+   :param inputs: The input data to be used for obtaining layer outputs.
+   :type inputs: tf.Tensor
+   :param layer_names: List of names of the layers whose values are to be printed.
+                       If not provided, default layer names will be used.
+   :type layer_names: List[str], optional
+
+   .. rubric:: Examples
+
+   >>> inputs = tf.constant(...)  # Provide input data
+   >>> print_callback = PrintLayerValuesCallback(inputs)
+   >>> model.fit(x_train, y_train, epochs=10, callbacks=[print_callback])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: on_epoch_end(epoch: int, **kwargs: Any) -> None
+
+      
+      Print the output values of specific layers at the end of each epoch.
+
+      This method prints the output values of specific layers of the model
+      at the end of each epoch during training.
+
+      :param epoch: The current epoch number.
+      :type epoch: int
+      :param logs: Dictionary containing the training metrics for the current epoch                 (optional).
+      :type logs: dict or None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: PlotLayerImageCallback(dataset: tensorflow.data.Dataset, save_path: str, layer_names: Optional[List[str]] = None)
+
+
+   Bases: :py:obj:`tensorflow.keras.callbacks.Callback`
+
+   
+   Callback to save images of specific layers at the end of each epoch.
+
+   This callback plots and saves images of specific layers of the model
+   at the end of each epoch during training.
+
+   :param dataset: The dataset used for plotting layer images.
+   :type dataset: tf.data.Dataset
+   :param save_path: The directory path where the images will be saved.
+   :type save_path: str
+   :param layer_names: List of names of the layers whose values are to be plotted and saved.
+                       If not provided, default layer names will be used.
+   :type layer_names: list of str, optional
+
+   .. rubric:: Examples
+
+   >>> callback = PlotLayerImageCallback(dataset, save_path='./layer_images')
+   >>> model.fit(x_train, y_train, epochs=10, callbacks=[callback])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: on_epoch_end(epoch: int, **kwargs: Any) -> None
+
+      
+      Plot and save images of specific layers at the end of each epoch.
+
+      This method plots and saves images of specific layers of the model
+      at the end of each epoch during training.
+
+      :param epoch: The current epoch number.
+      :type epoch: int
+      :param logs: Dictionary containing the training metrics for the current epoch                 (optional).
+      :type logs: dict or None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: LogFiguresCallback(dataset: tensorflow.data.Dataset, file_writer_figures: tensorflow.summary.FileWriter, layer_names: Optional[List[str]] = None)
+
+
+   Bases: :py:obj:`tensorflow.keras.callbacks.Callback`
+
+   
+   Callback to log figures of specific layers at the end of each epoch.
+
+   This callback logs figures of specific layers of the model
+   at the end of each epoch during training.
+
+   :param dataset: The dataset used for logging layer figures.
+   :type dataset: tf.data.Dataset
+   :param file_writer_figures: The FileWriter object to write the figures as image summaries.
+   :type file_writer_figures: tf.summary.FileWriter
+   :param layer_names: List of names of the layers whose figures are to be logged.
+                       If not provided, default layer names will be used.
+   :type layer_names: list of str, optional
+
+   .. rubric:: Examples
+
+   >>>  from datetime import datetime
+   >>>  import io
+
+   >>>  import tensorflow as tf
+   >>>  from tensorflow import keras
+
+   >>>  import matplotlib.pyplot as plt
+   >>>  import numpy as np
+
+   >>> logdir = "logs/image/" + datetime.now().strftime("%Y%m%d-%H%M%S")
+   >>> # Define the basic TensorBoard callback.
+   >>> tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir)
+   >>> file_writer_figures = tf.summary.create_file_writer(logdir + '/fig')
+   >>> callback = LogFiguresCallback(dataset, file_writer_figures)
+   >>> model.fit(x_train, y_train, epochs=10, callbacks=[callback])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: on_epoch_end(epoch: int, **kwargs: Any) -> None
+
+      
+      Log figures of specific layers at the end of each epoch.
+
+      This method logs figures of specific layers of the model
+      at the end of each epoch during training.
+
+      :param epoch: The current epoch number.
+      :type epoch: int
+      :param logs: Dictionary containing the training metrics for the current epoch                 (optional).
+      :type logs: dict or None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:function:: plot_to_image(figure: matplotlib.figure.Figure) -> tensorflow.Tensor
+
+   
+   Convert the matplotlib plot to tensor.
+
+   Converts the matplotlib plot specified by 'figure' to a PNG image and
+   returns it as a TensorFlow image tensor.
+
+   :param figure: The matplotlib figure object to convert.
+   :type figure: matplotlib.figure.Figure
+
+   :returns: A TensorFlow image tensor representing the converted PNG image.
+   :rtype: tf.Tensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>pydeepsar &#8212; DeepSAR Python package 1.0.1 documentation</title>
+    <title>pydeepsar &#8212; DeepSAR Python package 1.0.2 documentation</title>
   
   
   
@@ -51,7 +51,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/pydeepsar/index';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="pydeepsar.__main__" href="__main__/index.html" />
+    <link rel="next" title="pydeepsar.io" href="io/index.html" />
     <link rel="prev" title="API Reference" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -129,8 +129,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="DeepSAR Python package 1.0.1 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="DeepSAR Python package 1.0.1 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="DeepSAR Python package 1.0.2 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="DeepSAR Python package 1.0.2 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -367,9 +367,22 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="io/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.io</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="io/xr/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.io.xr</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="models/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/coherene/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.coherene</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/layers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.layers</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="util/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="util/callback/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util.callback</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="util/plot/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util.plot</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.__main__</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.cli</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="coherence_model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.coherence_model</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pydeepsar/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.pydeepsar</span></code></a></li>
 </ul>
 </li>
@@ -431,15 +444,35 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="module-pydeepsar">
-<span id="pydeepsar"></span><h1><a class="reference internal" href="../references.html#module-pydeepsar" title="pydeepsar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar</span></code></a><a class="headerlink" href="#module-pydeepsar" title="Permalink to this heading">#</a></h1>
+<span id="pydeepsar"></span><h1><a class="reference internal" href="#module-pydeepsar" title="pydeepsar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar</span></code></a><a class="headerlink" href="#module-pydeepsar" title="Permalink to this heading">#</a></h1>
 <p>DeepSAR Python package.</p>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="io/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.io</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="io/xr/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.io.xr</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models/coherene/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.coherene</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/layers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.layers</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="util/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="util/callback/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util.callback</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="util/plot/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util.plot</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.__main__</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.cli</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="coherence_model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.coherence_model</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="pydeepsar/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.pydeepsar</span></code></a></li>
 </ul>
 </div>
@@ -450,7 +483,7 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../references.html#pydeepsar.get_version" title="pydeepsar.get_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_version</span></code></a>(→ str)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.get_version" title="pydeepsar.get_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_version</span></code></a>(→ str)</p></td>
 <td><p>Return the program version.</p></td>
 </tr>
 </tbody>
@@ -524,11 +557,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="__main__/index.html"
+       href="io/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.__main__</span></code></p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.io</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -550,6 +583,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>

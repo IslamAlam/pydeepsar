@@ -1,6 +1,16 @@
 pydeepsar package
 =================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pydeepsar.io
+   pydeepsar.models
+   pydeepsar.util
+
 Submodules
 ----------
 
@@ -8,14 +18,6 @@ pydeepsar.cli module
 --------------------
 
 .. automodule:: pydeepsar.cli
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pydeepsar.coherence\_model module
----------------------------------
-
-.. automodule:: pydeepsar.coherence_model
    :members:
    :undoc-members:
    :show-inheritance:

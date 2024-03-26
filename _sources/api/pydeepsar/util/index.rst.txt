@@ -1,0 +1,39 @@
+:py:mod:`pydeepsar.util`
+========================
+
+.. py:module:: pydeepsar.util
+
+.. autoapi-nested-parse::
+
+   
+   Module for some handy utils like plot or callback during trainings.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   callback/index.rst
+   plot/index.rst
+
+

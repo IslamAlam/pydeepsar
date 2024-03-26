@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>pydeepsar.coherence_model &#8212; DeepSAR Python package 1.0.1 documentation</title>
+    <title>pydeepsar.models.layers &#8212; DeepSAR Python package 1.0.2 documentation</title>
   
   
   
@@ -19,40 +19,40 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/jupyterlite_sphinx.js"></script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js"></script>
+    <script src="../../../../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pydeepsar/coherence_model/index';</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="pydeepsar.pydeepsar" href="../pydeepsar/index.html" />
-    <link rel="prev" title="pydeepsar.cli" href="../cli/index.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pydeepsar/models/layers/index';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="pydeepsar.util" href="../../util/index.html" />
+    <link rel="prev" title="pydeepsar.models.coherene" href="../coherene/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -88,7 +88,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../../../search.html"
+      action="../../../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -118,7 +118,7 @@
 
   
 
-<a class="navbar-brand logo" href="../../../index.html">
+<a class="navbar-brand logo" href="../../../../index.html">
   
   
   
@@ -129,8 +129,8 @@
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="DeepSAR Python package 1.0.1 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="DeepSAR Python package 1.0.1 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="DeepSAR Python package 1.0.2 documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="DeepSAR Python package 1.0.2 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -170,35 +170,35 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../readme.html">
+                      <a class="nav-link nav-internal" href="../../../../readme.html">
                         Introduction
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../installation.html">
+                      <a class="nav-link nav-internal" href="../../../../installation.html">
                         Installation
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../../index.html">
+                      <a class="nav-link nav-internal" href="../../../index.html">
                         API Reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../contributing.html">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
                         Contributing
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../changelog.html">
+                      <a class="nav-link nav-internal" href="../../../../changelog.html">
                         Release Notes
                       </a>
                     </li>
@@ -275,35 +275,35 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../readme.html">
+                      <a class="nav-link nav-internal" href="../../../../readme.html">
                         Introduction
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../installation.html">
+                      <a class="nav-link nav-internal" href="../../../../installation.html">
                         Installation
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../../index.html">
+                      <a class="nav-link nav-internal" href="../../../index.html">
                         API Reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../contributing.html">
+                      <a class="nav-link nav-internal" href="../../../../contributing.html">
                         Contributing
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../changelog.html">
+                      <a class="nav-link nav-internal" href="../../../../changelog.html">
                         Release Notes
                       </a>
                     </li>
@@ -366,11 +366,24 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.__main__</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.cli</span></code></a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.coherence_model</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pydeepsar/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.pydeepsar</span></code></a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../io/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.io</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../io/xr/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.io.xr</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../coherene/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.coherene</span></code></a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.layers</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../util/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../util/callback/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util.callback</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/plot/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util.plot</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.__main__</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.cli</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pydeepsar/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.pydeepsar</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -402,19 +415,24 @@ document.write(`
 
 
 
+
+
 <nav aria-label="Breadcrumb">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../../../index.html" class="nav-link" aria-label="Home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">API Reference</a></li>
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">API Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar</span></code></a></li>
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models</span></code></a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><code...</li>
   </ul>
@@ -433,10 +451,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-pydeepsar.coherence_model">
-<span id="pydeepsar-coherence-model"></span><h1><a class="reference internal" href="#module-pydeepsar.coherence_model" title="pydeepsar.coherence_model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.coherence_model</span></code></a><a class="headerlink" href="#module-pydeepsar.coherence_model" title="Permalink to this heading">#</a></h1>
-<p>Module for computing coherence measures using TensorFlow.</p>
-<p>This module provides functions for computing coherence measures
+  <section id="module-pydeepsar.models.layers">
+<span id="pydeepsar-models-layers"></span><h1><a class="reference internal" href="#module-pydeepsar.models.layers" title="pydeepsar.models.layers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.layers</span></code></a><a class="headerlink" href="#module-pydeepsar.models.layers" title="Permalink to this heading">#</a></h1>
+<p>Module for adding advanced layers to Keras.</p>
+<p>This module provides layers for computing coherence measures
 using TensorFlow, a popular deep learning framework.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
@@ -444,53 +462,53 @@ using TensorFlow, a popular deep learning framework.</p>
 <h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.IntegrateSimpsonsRule" title="pydeepsar.coherence_model.IntegrateSimpsonsRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntegrateSimpsonsRule</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.models.layers.IntegrateSimpsonsRule" title="pydeepsar.models.layers.IntegrateSimpsonsRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntegrateSimpsonsRule</span></code></a></p></td>
 <td><p>Numerically integrate a function using Simpson's Rule.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule" title="pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntegrateDiscreteSimpsonsRule</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule" title="pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntegrateDiscreteSimpsonsRule</span></code></a></p></td>
 <td><p>Numerically integrate discrete data using Simpson's Rule.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule" title="pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule" title="pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule</span></code></a></p></td>
 <td><p>Perform complex integration of discrete data using Simpson's Rule.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer" title="pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer" title="pydeepsar.models.layers.ComplexCoherenceEstimatorLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer</span></code></a></p></td>
 <td><p>Estimate complex coherence using Simpson's Rule with discrete data points.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.PhaseEstimationLayer" title="pydeepsar.coherence_model.PhaseEstimationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimationLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.models.layers.PhaseEstimationLayer" title="pydeepsar.models.layers.PhaseEstimationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseEstimationLayer</span></code></a></p></td>
 <td><p>Estimate the phase angle of complex input.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.AmplitudeEstimationLayer" title="pydeepsar.coherence_model.AmplitudeEstimationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AmplitudeEstimationLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.models.layers.AmplitudeEstimationLayer" title="pydeepsar.models.layers.AmplitudeEstimationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AmplitudeEstimationLayer</span></code></a></p></td>
 <td><p>Estimate the amplitude of complex input.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer" title="pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseCenterDepthEstimationLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.models.layers.PhaseCenterDepthEstimationLayer" title="pydeepsar.models.layers.PhaseCenterDepthEstimationLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhaseCenterDepthEstimationLayer</span></code></a></p></td>
 <td><p>Estimate the phase center depth using complex coherence and kappa_z_vol.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.EstimateKappaELayer" title="pydeepsar.coherence_model.EstimateKappaELayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EstimateKappaELayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.models.layers.EstimateKappaELayer" title="pydeepsar.models.layers.EstimateKappaELayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EstimateKappaELayer</span></code></a></p></td>
 <td><p>Estimate kappa_e using theta_r and d_pen.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.UVLayer" title="pydeepsar.coherence_model.UVLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UVLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.models.layers.UVLayer" title="pydeepsar.models.layers.UVLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UVLayer</span></code></a></p></td>
 <td><p>Compute the f(z) using a Uniform Volume (UV) model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.UniformVolumeLayer" title="pydeepsar.coherence_model.UniformVolumeLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UniformVolumeLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.models.layers.UniformVolumeLayer" title="pydeepsar.models.layers.UniformVolumeLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UniformVolumeLayer</span></code></a></p></td>
 <td><p>Compute the f(z) using a Uniform Volume model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.WeibullLayer" title="pydeepsar.coherence_model.WeibullLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WeibullLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.models.layers.WeibullLayer" title="pydeepsar.models.layers.WeibullLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WeibullLayer</span></code></a></p></td>
 <td><p>Compute the Weibull distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.LinspaceLayer" title="pydeepsar.coherence_model.LinspaceLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinspaceLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.models.layers.LinspaceLayer" title="pydeepsar.models.layers.LinspaceLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinspaceLayer</span></code></a></p></td>
 <td><p>Generate a linearly spaced vector.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.BetweenConstraint" title="pydeepsar.coherence_model.BetweenConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BetweenConstraint</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pydeepsar.models.layers.BetweenConstraint" title="pydeepsar.models.layers.BetweenConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BetweenConstraint</span></code></a></p></td>
 <td><p>Constrain the weights to be between a minimum and maximum value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.coherence_model.AbsoluteValueLayer" title="pydeepsar.coherence_model.AbsoluteValueLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AbsoluteValueLayer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pydeepsar.models.layers.AbsoluteValueLayer" title="pydeepsar.models.layers.AbsoluteValueLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AbsoluteValueLayer</span></code></a></p></td>
 <td><p>Layer to compute the absolute value of the input tensor.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.IntegrateSimpsonsRule">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">IntegrateSimpsonsRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">tensorflow.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tensorflow.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.IntegrateSimpsonsRule" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.IntegrateSimpsonsRule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">IntegrateSimpsonsRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">tensorflow.Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tensorflow.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.IntegrateSimpsonsRule" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Numerically integrate a function using Simpson’s Rule.</p>
 <p>This layer numerically integrates a function using Simpson’s Rule method.</p>
@@ -525,8 +543,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.IntegrateSimpsonsRule.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.IntegrateSimpsonsRule.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.IntegrateSimpsonsRule.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.IntegrateSimpsonsRule.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform numerical integration using Simpson’s Rule.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -544,8 +562,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">IntegrateDiscreteSimpsonsRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">IntegrateDiscreteSimpsonsRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Numerically integrate discrete data using Simpson’s Rule.</p>
 <p>This layer numerically integrates discrete data using Simpson’s Rule method.</p>
@@ -572,8 +590,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform numerical integration using Simpson’s Rule for discrete data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -591,8 +609,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Perform complex integration of discrete data using Simpson’s Rule.</p>
 <p>This layer performs complex integration of discrete data using Simpson’s Rule method.</p>
@@ -619,8 +637,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform complex integration using Simpson’s Rule for discrete data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -638,8 +656,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">ComplexCoherenceEstimatorLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.ComplexCoherenceEstimatorLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">ComplexCoherenceEstimatorLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Estimate complex coherence using Simpson’s Rule with discrete data points.</p>
 <p>This layer estimates complex coherence using Simpson’s Rule with discrete data points.</p>
@@ -671,8 +689,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_num">
-<span class="sig-name descname"><span class="pre">integrand_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa_z_vol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_num" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.integrand_num">
+<span class="sig-name descname"><span class="pre">integrand_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa_z_vol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.integrand_num" title="Permalink to this definition">#</a></dt>
 <dd><p>Define the integrand for the numerator of gamma.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -692,8 +710,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_den">
-<span class="sig-name descname"><span class="pre">integrand_den</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_den" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.integrand_den">
+<span class="sig-name descname"><span class="pre">integrand_den</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.integrand_den" title="Permalink to this definition">#</a></dt>
 <dd><p>Define the integrand for the denominator of gamma.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -712,8 +730,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform the complex coherence estimation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -731,8 +749,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.PhaseEstimationLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">PhaseEstimationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.PhaseEstimationLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.PhaseEstimationLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">PhaseEstimationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.PhaseEstimationLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Estimate the phase angle of complex input.</p>
 <p>This layer estimates the phase angle of the complex input.</p>
@@ -757,8 +775,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.PhaseEstimationLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.PhaseEstimationLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.PhaseEstimationLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.PhaseEstimationLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Estimate the phase angle of complex input.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -776,8 +794,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.AmplitudeEstimationLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">AmplitudeEstimationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.AmplitudeEstimationLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.AmplitudeEstimationLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">AmplitudeEstimationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.AmplitudeEstimationLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Estimate the amplitude of complex input.</p>
 <p>This layer estimates the amplitude of the complex input.</p>
@@ -802,8 +820,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.AmplitudeEstimationLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.AmplitudeEstimationLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.AmplitudeEstimationLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.AmplitudeEstimationLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Estimate the amplitude of complex input.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -821,8 +839,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">PhaseCenterDepthEstimationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.PhaseCenterDepthEstimationLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">PhaseCenterDepthEstimationLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.PhaseCenterDepthEstimationLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Estimate the phase center depth using complex coherence and kappa_z_vol.</p>
 <p>This layer estimates the phase center depth using complex coherence and kappa_z_vol.</p>
@@ -849,8 +867,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.PhaseCenterDepthEstimationLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.PhaseCenterDepthEstimationLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Estimate the phase center depth.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -868,8 +886,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.EstimateKappaELayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">EstimateKappaELayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.EstimateKappaELayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.EstimateKappaELayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">EstimateKappaELayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.EstimateKappaELayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Estimate kappa_e using theta_r and d_pen.</p>
 <p>This layer estimates kappa_e using theta_r and d_pen.</p>
@@ -896,8 +914,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.EstimateKappaELayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.EstimateKappaELayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.EstimateKappaELayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.EstimateKappaELayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Estimate kappa_e.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -915,8 +933,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.UVLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">UVLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.UVLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.UVLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">UVLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.UVLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Compute the f(z) using a Uniform Volume (UV) model.</p>
 <p>This layer computes the f(z) using a Uniform Volume (UV) model based on the input parameters.</p>
@@ -945,8 +963,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.UVLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.UVLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.UVLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.UVLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the f(z) using a Uniform Volume (UV) model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -964,8 +982,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.UniformVolumeLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">UniformVolumeLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.UniformVolumeLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.UniformVolumeLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">UniformVolumeLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.UniformVolumeLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Compute the f(z) using a Uniform Volume model.</p>
 <p>This layer computes the f(z) using a Uniform Volume model based on the input parameters.</p>
@@ -992,8 +1010,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.UniformVolumeLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.UniformVolumeLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.UniformVolumeLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.UniformVolumeLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the f(z) using a Uniform Volume model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1011,8 +1029,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.WeibullLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">WeibullLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.WeibullLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.WeibullLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">WeibullLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.WeibullLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Compute the Weibull distribution.</p>
 <p>This layer computes the Weibull distribution based on the input parameters.</p>
@@ -1040,8 +1058,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.WeibullLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.WeibullLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.WeibullLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.WeibullLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the Weibull distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1059,8 +1077,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.LinspaceLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">LinspaceLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.LinspaceLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.LinspaceLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">LinspaceLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.LinspaceLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Generate a linearly spaced vector.</p>
 <p>This layer generates a linearly spaced vector between two given values.</p>
@@ -1093,8 +1111,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.LinspaceLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.LinspaceLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.LinspaceLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.LinspaceLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Generate a linearly spaced vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1112,8 +1130,8 @@ using TensorFlow, a popular deep learning framework.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.BetweenConstraint">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">BetweenConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.BetweenConstraint" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.BetweenConstraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">BetweenConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.BetweenConstraint" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.constraints.Constraint</span></code></p>
 <p>Constrain the weights to be between a minimum and maximum value.</p>
 <p>This constraint clips the weights to be between a specified minimum
@@ -1141,8 +1159,8 @@ and maximum value.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.BetweenConstraint.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.BetweenConstraint.__call__" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.BetweenConstraint.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.BetweenConstraint.__call__" title="Permalink to this definition">#</a></dt>
 <dd><p>Clip the weights to be between min_value and max_value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1158,8 +1176,8 @@ and maximum value.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.BetweenConstraint.get_config">
-<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.BetweenConstraint.get_config" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.BetweenConstraint.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pydeepsar.models.layers.BetweenConstraint.get_config" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the configuration of the constraint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1174,8 +1192,8 @@ and maximum value.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.AbsoluteValueLayer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.coherence_model.</span></span><span class="sig-name descname"><span class="pre">AbsoluteValueLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.coherence_model.AbsoluteValueLayer" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.AbsoluteValueLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydeepsar.models.layers.</span></span><span class="sig-name descname"><span class="pre">AbsoluteValueLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydeepsar.models.layers.AbsoluteValueLayer" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">tensorflow.keras.layers.Layer</span></code></p>
 <p>Layer to compute the absolute value of the input tensor.</p>
 <p>This layer computes the absolute value of the input tensor element-wise.</p>
@@ -1197,8 +1215,8 @@ and maximum value.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pydeepsar.coherence_model.AbsoluteValueLayer.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.coherence_model.AbsoluteValueLayer.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pydeepsar.models.layers.AbsoluteValueLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensorflow.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensorflow.Tensor</span></span></span><a class="headerlink" href="#pydeepsar.models.layers.AbsoluteValueLayer.call" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the absolute value of the input tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1230,20 +1248,20 @@ and maximum value.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../cli/index.html"
+       href="../coherene/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.cli</span></code></p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.models.coherene</span></code></p>
       </div>
     </a>
     <a class="right-next"
-       href="../pydeepsar/index.html"
+       href="../../util/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.pydeepsar</span></code></p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pydeepsar.util</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1267,63 +1285,63 @@ and maximum value.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.IntegrateSimpsonsRule"><code class="docutils literal notranslate"><span class="pre">IntegrateSimpsonsRule</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.IntegrateSimpsonsRule.call"><code class="docutils literal notranslate"><span class="pre">IntegrateSimpsonsRule.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.IntegrateSimpsonsRule"><code class="docutils literal notranslate"><span class="pre">IntegrateSimpsonsRule</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.IntegrateSimpsonsRule.call"><code class="docutils literal notranslate"><span class="pre">IntegrateSimpsonsRule.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule"><code class="docutils literal notranslate"><span class="pre">IntegrateDiscreteSimpsonsRule</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.IntegrateDiscreteSimpsonsRule.call"><code class="docutils literal notranslate"><span class="pre">IntegrateDiscreteSimpsonsRule.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule"><code class="docutils literal notranslate"><span class="pre">IntegrateDiscreteSimpsonsRule</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.IntegrateDiscreteSimpsonsRule.call"><code class="docutils literal notranslate"><span class="pre">IntegrateDiscreteSimpsonsRule.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule"><code class="docutils literal notranslate"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.ComplexIntegrateDiscreteSimpsonsRule.call"><code class="docutils literal notranslate"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule"><code class="docutils literal notranslate"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.ComplexIntegrateDiscreteSimpsonsRule.call"><code class="docutils literal notranslate"><span class="pre">ComplexIntegrateDiscreteSimpsonsRule.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_num"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer.integrand_num()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.integrand_den"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer.integrand_den()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.ComplexCoherenceEstimatorLayer.call"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.integrand_num"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer.integrand_num()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.integrand_den"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer.integrand_den()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.ComplexCoherenceEstimatorLayer.call"><code class="docutils literal notranslate"><span class="pre">ComplexCoherenceEstimatorLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.PhaseEstimationLayer"><code class="docutils literal notranslate"><span class="pre">PhaseEstimationLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.PhaseEstimationLayer.call"><code class="docutils literal notranslate"><span class="pre">PhaseEstimationLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.PhaseEstimationLayer"><code class="docutils literal notranslate"><span class="pre">PhaseEstimationLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.PhaseEstimationLayer.call"><code class="docutils literal notranslate"><span class="pre">PhaseEstimationLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.AmplitudeEstimationLayer"><code class="docutils literal notranslate"><span class="pre">AmplitudeEstimationLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.AmplitudeEstimationLayer.call"><code class="docutils literal notranslate"><span class="pre">AmplitudeEstimationLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.AmplitudeEstimationLayer"><code class="docutils literal notranslate"><span class="pre">AmplitudeEstimationLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.AmplitudeEstimationLayer.call"><code class="docutils literal notranslate"><span class="pre">AmplitudeEstimationLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer"><code class="docutils literal notranslate"><span class="pre">PhaseCenterDepthEstimationLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.PhaseCenterDepthEstimationLayer.call"><code class="docutils literal notranslate"><span class="pre">PhaseCenterDepthEstimationLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.PhaseCenterDepthEstimationLayer"><code class="docutils literal notranslate"><span class="pre">PhaseCenterDepthEstimationLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.PhaseCenterDepthEstimationLayer.call"><code class="docutils literal notranslate"><span class="pre">PhaseCenterDepthEstimationLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.EstimateKappaELayer"><code class="docutils literal notranslate"><span class="pre">EstimateKappaELayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.EstimateKappaELayer.call"><code class="docutils literal notranslate"><span class="pre">EstimateKappaELayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.EstimateKappaELayer"><code class="docutils literal notranslate"><span class="pre">EstimateKappaELayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.EstimateKappaELayer.call"><code class="docutils literal notranslate"><span class="pre">EstimateKappaELayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.UVLayer"><code class="docutils literal notranslate"><span class="pre">UVLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.UVLayer.call"><code class="docutils literal notranslate"><span class="pre">UVLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.UVLayer"><code class="docutils literal notranslate"><span class="pre">UVLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.UVLayer.call"><code class="docutils literal notranslate"><span class="pre">UVLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.UniformVolumeLayer"><code class="docutils literal notranslate"><span class="pre">UniformVolumeLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.UniformVolumeLayer.call"><code class="docutils literal notranslate"><span class="pre">UniformVolumeLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.UniformVolumeLayer"><code class="docutils literal notranslate"><span class="pre">UniformVolumeLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.UniformVolumeLayer.call"><code class="docutils literal notranslate"><span class="pre">UniformVolumeLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.WeibullLayer"><code class="docutils literal notranslate"><span class="pre">WeibullLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.WeibullLayer.call"><code class="docutils literal notranslate"><span class="pre">WeibullLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.WeibullLayer"><code class="docutils literal notranslate"><span class="pre">WeibullLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.WeibullLayer.call"><code class="docutils literal notranslate"><span class="pre">WeibullLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.LinspaceLayer"><code class="docutils literal notranslate"><span class="pre">LinspaceLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.LinspaceLayer.call"><code class="docutils literal notranslate"><span class="pre">LinspaceLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.LinspaceLayer"><code class="docutils literal notranslate"><span class="pre">LinspaceLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.LinspaceLayer.call"><code class="docutils literal notranslate"><span class="pre">LinspaceLayer.call()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.BetweenConstraint"><code class="docutils literal notranslate"><span class="pre">BetweenConstraint</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.BetweenConstraint.__call__"><code class="docutils literal notranslate"><span class="pre">BetweenConstraint.__call__()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.BetweenConstraint.get_config"><code class="docutils literal notranslate"><span class="pre">BetweenConstraint.get_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.BetweenConstraint"><code class="docutils literal notranslate"><span class="pre">BetweenConstraint</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.BetweenConstraint.__call__"><code class="docutils literal notranslate"><span class="pre">BetweenConstraint.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.BetweenConstraint.get_config"><code class="docutils literal notranslate"><span class="pre">BetweenConstraint.get_config()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.AbsoluteValueLayer"><code class="docutils literal notranslate"><span class="pre">AbsoluteValueLayer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.coherence_model.AbsoluteValueLayer.call"><code class="docutils literal notranslate"><span class="pre">AbsoluteValueLayer.call()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.AbsoluteValueLayer"><code class="docutils literal notranslate"><span class="pre">AbsoluteValueLayer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeepsar.models.layers.AbsoluteValueLayer.call"><code class="docutils literal notranslate"><span class="pre">AbsoluteValueLayer.call()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1346,8 +1364,8 @@ and maximum value.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
