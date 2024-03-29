@@ -293,7 +293,7 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
     def __init__(
         self,
         dataset: tf.data.Dataset,
-        file_writer_figures: tf.summary.FileWriter,
+        file_writer_figures: tf.summary.create_file_writer,
         layer_names: Optional[List[str]] = None,
     ) -> None:
         """Initialize the LogFiguresCallback.
@@ -302,7 +302,7 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         ----------
         dataset : tf.data.Dataset
             The dataset used for logging layer figures.
-        file_writer_figures : tf.summary.FileWriter
+        file_writer_figures : tf.summary.create_file_writer
             The FileWriter object to write the figures as image summaries.
         layer_names : list of str, optional
             List of names of the layers whose figures are to be logged.
@@ -321,7 +321,7 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         else:
             self.layer_names = layer_names
 
-    def on_epoch_end(self, epoch: int, **kwargs: Any) -> None:
+    def on_epoch_end(self, epoch: int, logs: Any = None) -> None:
         """Log figures of specific layers at the end of each epoch.
 
         This method logs figures of specific layers of the model

@@ -381,6 +381,8 @@ class ComplexCoherenceEstimatorLayer(tf.keras.layers.Layer):  # type: ignore[mis
             The estimated complex coherence.
         """  # noqa: E501
         z_values, func_z_values, kappa_z, kappa_z_vol, z0 = inputs
+        kappa_z = tf.abs(kappa_z)
+        kappa_z_vol = tf.abs(kappa_z_vol)
 
         def integral_num(
             z: tf.Tensor, func_z: tf.Tensor, kappa_z_vol: tf.Tensor
