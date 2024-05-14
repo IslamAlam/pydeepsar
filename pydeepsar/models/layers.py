@@ -12,11 +12,20 @@ using TensorFlow, a popular deep learning framework.
 from typing import Any, Callable
 
 import tensorflow as tf
+import tensorflow_probability as tfp
 
-from keras.src.backend.common.variables import ALLOWED_DTYPES
+try:
+    from keras.src.backend.common.variables import ALLOWED_DTYPES
 
-ALLOWED_DTYPES.add("complex128")
-ALLOWED_DTYPES.add("complex64")
+    ALLOWED_DTYPES.add("complex128")
+    ALLOWED_DTYPES.add("complex64")
+except ModuleNotFoundError:
+    print("Module not found. Skipping import.")
+finally:
+    import keras
+
+    print("Keras version:", keras.__version__)
+
 
 # import numpy as np
 # import numpy.typing as npt
@@ -384,37 +393,263 @@ class ComplexCoherenceEstimatorLayer(tf.keras.layers.Layer):  # type: ignore[mis
         kappa_z = tf.abs(kappa_z)
         kappa_z_vol = tf.abs(kappa_z_vol)
 
-        def integral_num(
+        def integrate_num(
             z: tf.Tensor, func_z: tf.Tensor, kappa_z_vol: tf.Tensor
         ) -> tf.Tensor:
             return self.integrand_num(z, func_z, kappa_z_vol)
 
-        def integral_den(z: tf.Tensor, func_z: tf.Tensor) -> tf.Tensor:
+        def integrate_den(z: tf.Tensor, func_z: tf.Tensor) -> tf.Tensor:
             return self.integrand_den(
                 z,
                 func_z,
             )
 
         # Simpson's rule calculation for numerator
-        integral_num = integral_num(
+        integral_num = integrate_num(
             z_values,
             func_z_values,
             kappa_z_vol,
         )
 
         # Simpson's rule calculation for denominator
-        integral_den = integral_den(
+        integral_den = integrate_den(
             z_values,
             func_z_values,
         )
 
         # Calculate gamma
+        # gamma = tf.math.exp(tf.complex(0.0, (kappa_z * z0))) * (
+        #     tf.cast(integral_num, tf.complex64)
+        #     / tf.cast(integral_den, tf.complex64)
+        # )
         gamma = tf.math.exp(tf.complex(0.0, (kappa_z * z0))) * (
-            tf.cast(integral_num, tf.complex64)
-            / tf.cast(integral_den, tf.complex64)
+            integral_num / integral_den
         )
 
         return gamma
+
+
+class ComplexCoherenceEstimatorIceLayer(tf.keras.layers.Layer):  # type: ignore[misc]
+    """Estimate complex coherence using Simpson's Rule with discrete data points.
+
+    This layer estimates complex coherence using Simpson's Rule with discrete data points.
+
+    Parameters
+    ----------
+    inputs : tf.Tensor
+        A tensor containing z_values, func_z_values, kappa_z, kappa_z_vol, and z0.
+
+    Returns
+    -------
+    tf.Tensor
+        The estimated complex coherence.
+
+    Raises
+    ------
+    ValueError
+        If the input data is not in the expected format.
+
+    Examples
+    --------
+    >>> layer = ComplexCoherenceEstimatorLayer()
+    >>> z_values = tf.constant([1.0, 2.0, 3.0])
+    >>> func_z_values = tf.constant([2.0, 3.0, 4.0])
+    >>> kappa_z = tf.constant(0.5)
+    >>> kappa_z_vol = tf.constant(0.8)
+    >>> z0 = tf.constant(1.2)
+    >>> inputs = [z_values, func_z_values, kappa_z, kappa_z_vol, z0]
+    >>> result = layer(inputs)
+    >>> print(result)
+    tf.Tensor([-0.5934472+0.67985195j], shape=(1,), dtype=complex64)
+    """  # noqa: E501
+
+    def __init__(self, **kwargs: Any):
+        """Initialize the ComplexCoherenceEstimatorLayer.
+
+        Parameters
+        ----------
+        **kwargs : keyword arguments, optional
+            Additional keyword arguments to be passed to the base Layer class.
+        """
+        super(ComplexCoherenceEstimatorIceLayer, self).__init__(**kwargs)
+
+    def integrand_num(
+        self, z: tf.Tensor, f: tf.Tensor, kappa_z_vol: tf.Tensor
+    ) -> tf.Tensor:
+        """Define the integrand for the numerator of gamma.
+
+        Parameters
+        ----------
+        z : tf.Tensor
+            Integration variable.
+        f : tf.Tensor
+            Function f(z).
+        kappa_z_vol : tf.Tensor
+            Parameter kappa_z_vol.
+
+        Returns
+        -------
+        tf.Tensor
+            Value of the integrand for the numerator.
+        """
+        x_values = z
+        y_values = tf.cast(f, tf.complex64) * tf.math.exp(
+            tf.complex(0.0, (kappa_z_vol * z))
+        )
+
+        return ComplexIntegrateDiscreteSimpsonsRule(name="IntegrateNum")(
+            [x_values, y_values]
+        )
+
+    def integrand_den(self, z: tf.Tensor, f: tf.Tensor) -> tf.Tensor:
+        """Define the integrand for the denominator of gamma.
+
+        Parameters
+        ----------
+        z : tf.Tensor
+            Integration variable.
+        f : tf.Tensor
+            Function f(z).
+
+        Returns
+        -------
+        tf.Tensor
+            Value of the integrand for the denominator.
+        """
+        x_values = z
+        y_values = f
+        return ComplexIntegrateDiscreteSimpsonsRule(name="IntegrateDen")(
+            [x_values, y_values]
+        )
+
+    def call(self, inputs: tf.Tensor, **kwargs: Any) -> tf.Tensor:
+        """Perform the complex coherence estimation.
+
+        Parameters
+        ----------
+        inputs : tf.Tensor
+            A tensor containing z_values, func_z_values, kappa_z, kappa_z_vol, and z0.
+
+        Returns
+        -------
+        tf.Tensor
+            The estimated complex coherence.
+        """  # noqa: E501
+        z_values, func_z_values, kappa_z, kappa_z_vol, z0 = inputs
+        kappa_z = tf.abs(kappa_z)
+        kappa_z_vol = tf.abs(kappa_z_vol)
+
+        def integrate_num(
+            z: tf.Tensor, func_z: tf.Tensor, kappa_z_vol: tf.Tensor
+        ) -> tf.Tensor:
+            return self.integrand_num(z, func_z, kappa_z_vol)
+
+        def integrate_den(z: tf.Tensor, func_z: tf.Tensor) -> tf.Tensor:
+            return self.integrand_den(
+                z,
+                func_z,
+            )
+
+        # Simpson's rule calculation for numerator
+        integral_num = integrate_num(
+            z_values,
+            func_z_values,
+            kappa_z_vol,
+        )
+
+        # Simpson's rule calculation for denominator
+        integral_den = integrate_den(
+            z_values,
+            func_z_values,
+        )
+
+        # Calculate gamma
+        # gamma = tf.math.exp(tf.complex(0.0, (kappa_z * z0))) * (
+        #     tf.cast(integral_num, tf.complex64)
+        #     / tf.cast(integral_den, tf.complex64)
+        # )
+        gamma = tf.math.exp(tf.complex(0.0, (kappa_z * z0))) * (
+            integral_num / integral_den
+        )
+
+        # coh = tf.abs(gamma)
+        # phase = tf.math.angle(gamma)
+        # phase_center_depth = phase / kappa_z_vol
+        # return coh, phase, phase_center_depth
+        return tf.math.real(gamma), tf.math.imag(gamma)
+
+
+class UniformVolumeOneInputLayer(tf.keras.layers.Layer):  # type: ignore[misc]
+    """Compute the f(z) using a Uniform Volume model.
+
+    This layer computes the f(z) using a Uniform Volume model based on the input parameters.
+
+    Parameters
+    ----------
+    **kwargs : keyword arguments, optional
+        Additional options for the base Layer class.
+
+    Returns
+    -------
+    tf.Tensor
+        The computed f(z).
+
+    Examples
+    --------
+    >>> import tensorflow as tf
+    >>> layer = UniformVolumeLayer()
+    >>> d_pen = tf.constant([0.5, 1.0])
+    >>> result = layer(d_pen)
+    >>> print(result)
+    tf.Tensor([1.2214028 1.4918247], shape=(2,), dtype=float32)
+    """  # noqa: E501
+
+    def __init__(
+        self,
+        a: float = 0,
+        b: float = 1,
+        num_intervals: int = 50,
+        **kwargs: Any,
+    ):
+        """Initialize the UniformVolumeLayer.
+
+        Parameters
+        ----------
+        a : float, optional
+            The start value for the linspace z values.
+        b : float, optional
+            The end value for the linspace z values.
+        num_intervals : int, optional
+            The number of intervals to generate in the linspace.
+        **kwargs : keyword arguments, optional
+            Additional options for the base Layer class.
+        """
+        super(UniformVolumeOneInputLayer, self).__init__(**kwargs)
+        self.z = tf.linspace(a, b, num_intervals + 1)
+        self.z = tf.expand_dims(self.z, axis=0)
+
+    def call(self, inputs: tf.Tensor, **kwargs: Any) -> tf.Tensor:
+        """Compute the f(z) using a Uniform Volume model.
+
+        Parameters
+        ----------
+        d_pen : tf.Tensor
+            A tensor containing d_pen.
+
+        Returns
+        -------
+        tf.Tensor
+            The computed f(z).
+        """
+        d_pen = inputs
+        # print(self.z)
+        # return tf.math.exp(tf.tensordot((2 / d_pen), self.z))
+        x = self.z
+        # y = tf.math.exp(tf.tensordot((2.0 / d_pen), x, axes=[[1], [0]]))
+        y = tf.math.exp(
+            tf.einsum("ij,jk->ik", tf.math.divide_no_nan(2.0, d_pen), x)
+        )
+        return x, y
 
 
 class PhaseEstimationLayer(tf.keras.layers.Layer):  # type: ignore[misc]
@@ -574,7 +809,7 @@ class PhaseCenterDepthEstimationLayer(tf.keras.layers.Layer):  # type: ignore[mi
         """
         gamma, kappa_z_vol = inputs
         phase = tf.math.angle(gamma)
-        phase_center_depth = phase / kappa_z_vol
+        phase_center_depth = tf.math.divide_no_nan(phase, kappa_z_vol)
         return phase_center_depth
 
 
@@ -805,6 +1040,176 @@ class WeibullLayer(tf.keras.layers.Layer):  # type: ignore[misc]
             * tf.pow(-(lambda_w * z), (k_w - 1))
             * tf.exp(-tf.pow(-(lambda_w * z), k_w))
         )
+
+
+class WeibullProfileLayer(tf.keras.layers.Layer):  # type: ignore[misc]
+    """Compute the Weibull distribution.
+
+    This layer computes the Weibull distribution based on the input parameters.
+
+    Parameters
+    ----------
+    **kwargs : keyword arguments, optional
+        Additional options for the base Layer class.
+
+    Returns
+    -------
+    tf.Tensor
+        The computed Weibull distribution.
+
+    Examples
+    --------
+    >>> import tensorflow as tf
+    >>> layer = WeibullProfileLayer()
+    >>> z = tf.constant([0.1, 0.2])
+    >>> lambda_w = tf.constant([1.0, 2.0])
+    >>> k_w = tf.constant([2.0, 3.0])
+    >>> inputs = [z, lambda_w, k_w]
+    >>> result = layer(inputs)
+    >>> print(result)
+    tf.Tensor([-0.19800997  1.0234487 ], shape=(2,), dtype=float32)
+    """
+
+    def __init__(
+        self,
+        a: float = 0,
+        b: float = 1,
+        num_intervals: int = 50,
+        **kwargs: Any,
+    ):
+        """Initialize the WeibullLayer.
+
+        Parameters
+        ----------
+        a : float, optional
+            The start value for the linspace z values.
+        b : float, optional
+            The end value for the linspace z values.
+        num_intervals : int, optional
+            The number of intervals to generate in the linspace.
+        **kwargs : keyword arguments, optional
+            Additional options for the base Layer class.
+        """
+        super(WeibullProfileLayer, self).__init__(**kwargs)
+        self.z = tf.linspace(a, b, num_intervals + 1)
+        self.z = tf.expand_dims(self.z, axis=0)
+
+    def call(self, inputs: tf.Tensor, **kwargs: Any) -> tf.Tensor:
+        """Compute the Weibull distribution.
+
+        Parameters
+        ----------
+        inputs : tf.Tensor
+            A tensor containing z, lambda_w, and k_w.
+
+        Returns
+        -------
+        tf.Tensor
+            The computed Weibull distribution.
+        """
+        lambda_w, k_w = inputs
+        z = self.z
+
+        # tf.einsum('ij,jk->ik', lambda_w, x)
+        # Calculate the einsum once to avoid redundancy
+        einsum_result = tf.einsum("ij,jk->ik", lambda_w, z)
+
+        # Clip the values to avoid underflow or overflow
+        clipped_einsum_result = (
+            tf.clip_by_value(einsum_result, -1e10, 1e10)
+            + tf.keras.backend.epsilon()
+        )
+
+        # Calculate y
+        y = (
+            lambda_w
+            * k_w
+            * tf.pow(-clipped_einsum_result, (k_w - 1))
+            * tf.exp(-tf.pow(-clipped_einsum_result, k_w))
+        )
+        return z, y
+
+
+class WeibullProbLayer(tf.keras.layers.Layer):  # type: ignore[misc]
+    """Compute the Weibull distribution.
+
+    This layer computes the Weibull distribution based on the input parameters.
+
+    Parameters
+    ----------
+    **kwargs : keyword arguments, optional
+        Additional options for the base Layer class.
+
+    Returns
+    -------
+    tf.Tensor
+        The computed Weibull distribution.
+
+    Examples
+    --------
+    >>> import tensorflow as tf
+    >>> layer = WeibullLayer()
+    >>> z = tf.constant([0.1, 0.2])
+    >>> lambda_w = tf.constant([1.0, 2.0])
+    >>> k_w = tf.constant([2.0, 3.0])
+    >>> inputs = [z, lambda_w, k_w]
+    >>> result = layer(inputs)
+    >>> print(result)
+    tf.Tensor([-0.19800997  1.0234487 ], shape=(2,), dtype=float32)
+    """
+
+    def __init__(
+        self,
+        a: float = 0,
+        b: float = 1,
+        num_intervals: int = 50,
+        **kwargs: Any,
+    ):
+        """Initialize the WeibullLayer.
+
+        Parameters
+        ----------
+        a : float, optional
+            The start value for the linspace z values.
+        b : float, optional
+            The end value for the linspace z values.
+        num_intervals : int, optional
+            The number of intervals to generate in the linspace.
+        **kwargs : keyword arguments, optional
+            Additional options for the base Layer class.
+        """
+        super(WeibullProbLayer, self).__init__(**kwargs)
+        self.z = tf.linspace(a, b, num_intervals + 1)
+        self.z = tf.expand_dims(self.z, axis=0)
+
+    def call(self, inputs: tf.Tensor, **kwargs: Any) -> tf.Tensor:
+        """Compute the Weibull distribution.
+
+        Parameters
+        ----------
+        inputs : tf.Tensor
+            A tensor containing z, lambda_w, and k_w.
+
+        Returns
+        -------
+        tf.Tensor
+            The computed Weibull distribution.
+        """
+        concentration, rate = inputs
+        # concentration, scale = inputs
+
+        concentration = tf.math.softplus(concentration)
+        # rate = tf.math.softplus(rate)
+        scale = 1.0 / (
+            rate + tf.keras.backend.epsilon()
+        )  # Convert rate to scale
+
+        # scale = tf.math.softplus(scale)
+
+        weibull = tfp.distributions.Weibull(
+            concentration=concentration, scale=scale
+        )
+        return self.z, weibull.prob(tf.math.abs(self.z))
 
 
 class LinspaceLayer(tf.keras.layers.Layer):  # type: ignore[misc]

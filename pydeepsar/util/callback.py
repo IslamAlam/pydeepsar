@@ -313,7 +313,7 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         self.file_writer_figures = file_writer_figures
         if layer_names is None:
             self.layer_names = [
-                "d_pen_prediction",
+                "d_pen",
                 "coherence",
                 "PhaseCenterDepth",
                 "phase",
@@ -339,7 +339,10 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         dataframe = self.dataset.to_dataframe()
 
         # Define input for prediction
-        inputs, _ = create_model_input_output(dataframe=dataframe, output=None)
+        inputs, _ = create_model_input_output(
+            dataframe=dataframe,
+            output=None,
+        )
 
         # Define a list of desired layers' names
         layer_names = self.layer_names

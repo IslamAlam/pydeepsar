@@ -86,7 +86,8 @@ def plot_complex_polar(
     """
     # Calculate magnitude and phase angle
     magnitude = np.abs(z)
-    phase = np.angle(z, deg=True)
+    # phase = np.angle(z, deg=True)
+    phase = np.angle(z)
 
     if ax is None:
         # Create a new figure and axis

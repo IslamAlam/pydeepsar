@@ -22,7 +22,8 @@ from pydeepsar.models.layers import (
 
 
 def create_model_input_output(
-    dataframe: pd.DataFrame, output: Optional[dict[str, str]] = None
+    dataframe: pd.DataFrame,
+    output: Optional[dict[str, str]] = None,
 ) -> tuple[dict[str, int], dict[str, int]]:
     """
     Create input X with z_repeated and z0_tensor.
@@ -59,16 +60,15 @@ def create_model_input_output(
     data = dataframe.copy()
 
     # Define z values
-    a_input = -500.0
-    b_input = 0.0
-    num_intervals_input = 1000
-    z = np.linspace(a_input, b_input, num_intervals_input + 1)
+    # a_input = -500.0
+    # b_input = 0.0
+    # z = np.linspace(a_input, b_input, num_intervals_input + 1)
 
     # Calculate data length
     data_length = data.shape[0]
 
     # Repeat z values for each row in data
-    z_repeated = np.tile(np.expand_dims(z, axis=0), [data_length, 1])
+    # z_repeated = np.tile(np.expand_dims(z, axis=0), [data_length, 1])
 
     # Define z0
     z0 = 0.0
@@ -89,10 +89,10 @@ def create_model_input_output(
                 ]
             ].values
         ),
-        "z": z_repeated,
+        # "z": z_repeated,
         "kappa_z": data["geo_kz_ml"].values[:, np.newaxis],
-        "z0": z0_tensor,
         "kappa_z_vol": data["geo_kz_ml"].values[:, np.newaxis],
+        "z0": z0_tensor,
     }
 
     # Prepare optional output dictionary if output is provided
