@@ -48,7 +48,7 @@ Example:
 
 import io
 
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -294,9 +294,10 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         self,
         dataset: tf.data.Dataset,
         file_writer_figures: tf.summary.create_file_writer,
-        layer_names: Optional[List[str]] = None,
+        layer_names: Optional[Dict[str, Dict[str, int]]] = None,
     ) -> None:
-        """Initialize the LogFiguresCallback.
+        """
+        Initialize the LogFiguresCallback.
 
         Parameters
         ----------
@@ -312,12 +313,9 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         self.dataset = dataset
         self.file_writer_figures = file_writer_figures
         if layer_names is None:
-            self.layer_names = [
-                "d_pen",
-                "coherence",
-                "PhaseCenterDepth",
-                "phase",
-            ]
+            self.layer_names = {
+                "PhaseCenterDepth": {"vmin": -10, "vmax": 0},
+            }
         else:
             self.layer_names = layer_names
 
@@ -344,13 +342,17 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
             output=None,
         )
 
+        # Ensure layer_names is not None
+        if self.layer_names is None:
+            return
+
         # Define a list of desired layers' names
-        layer_names = self.layer_names
+        layer_names_list = list(self.layer_names.keys())
 
         # Define a submodel that outputs the desired layers' outputs
         desired_layers_outputs = [
             self.model.get_layer(name=layer_name).output
-            for layer_name in layer_names
+            for layer_name in layer_names_list
         ]
         desired_layers_model = tf.keras.Model(
             inputs=self.model.input, outputs=desired_layers_outputs
@@ -360,20 +362,35 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         output_values = desired_layers_model.predict(inputs)
 
         # Add the output values of the desired layers to dataframe
-        for layer_name, output_value in zip(layer_names, output_values):
+        for layer_name, output_value in zip(layer_names_list, output_values):
             dataframe[layer_name] = output_value
 
         updated_ds = update_dataset_with_dataframe(
-            self.dataset, dataframe[layer_names]
+            self.dataset, dataframe[layer_names_list]
         )
 
         fig_image = {}
-        for i, layer_name in enumerate(layer_names):
+        for i, layer_name in enumerate(self.layer_names):
             fig, ax = plt.subplots(figsize=(6, 6))
 
             # Plot absolute value if dtype is complex
             if not np.iscomplexobj(updated_ds[layer_name]):
-                updated_ds[layer_name].squeeze().plot.imshow(ax=ax)
+                vmin = self.layer_names.get(layer_name, {}).get("vmin", None)
+                vmax = self.layer_names.get(layer_name, {}).get("vmax", None)
+
+                # If vmin or vmax is None, calculate them using np.nanpercentile
+                if vmin is None or vmax is None:
+                    percentiles = np.nanpercentile(
+                        updated_ds[layer_name], [2, 98]
+                    )
+                    vmin = percentiles[0]
+                    vmax = percentiles[1]
+
+                updated_ds[layer_name].squeeze().plot.imshow(
+                    ax=ax, vmin=vmin, vmax=vmax
+                )
+
+                # updated_ds[layer_name].squeeze().plot.imshow(ax=ax)
 
             ax.set_title(f"Output value of layer {layer_name}")
 
@@ -383,6 +400,9 @@ class LogFiguresCallback(tf.keras.callbacks.Callback):  # type: ignore[misc]
         with self.file_writer_figures.as_default():
             for key, value in fig_image.items():
                 tf.summary.image(key, value, step=epoch)
+
+        # Flush to make sure summaries are written to disk
+        self.file_writer_figures.flush()
 
 
 def plot_to_image(figure: Figure) -> tf.Tensor:

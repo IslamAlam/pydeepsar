@@ -78,6 +78,7 @@ build:
 #* Installation
 .PHONY: install
 install:
+	poetry config virtualenvs.create false
 	poetry lock -n && poetry export --without-hashes > requirements.txt
 	poetry install -n
 	-poetry run mypy --install-types --non-interactive ./

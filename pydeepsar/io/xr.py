@@ -24,7 +24,7 @@ Initializing TandemXData and accessing DEM files:
 
 >>> tandem_root = "../../../../Summit_East_Coast_2017/TanDEM-X"
 >>> tandem_data = tg.TandemXData(tandem_root)
->>> dem_files = tandem_data.get_dem_files()
+>>> dem_files = tandem_data.get_netcdf_files()
 >>> print(dem_files)
 [Path('/path/to/dem_file1.nc'), Path('/path/to/dem_file2.nc'), ...]
 
@@ -130,7 +130,7 @@ class TandemXData:
     --------
     >>> tandem_root = "../../../../Summit_East_Coast_2017/TanDEM-X"
     >>> tandem_data = TandemXData(tandem_root)
-    >>> dem_files = tandem_data.get_dem_files()
+    >>> dem_files = tandem_data.get_netcdf_files()
     >>> print(dem_files)
     [Path('/path/to/dem_file1.nc'), Path('/path/to/dem_file2.nc'), ...]
     """
@@ -140,7 +140,7 @@ class TandemXData:
         self.root_dir = Path(root_dir)
         self.dem_files = sorted(self.root_dir.glob("**/TDM1_SAR__COS*.nc"))
 
-    def get_dem_files(self) -> List[Path]:
+    def get_netcdf_files(self) -> List[Path]:
         """Get a list of DEM files."""
         return self.dem_files
 
@@ -186,7 +186,7 @@ class GeoNetCDFDataReader:
 
 
 def update_dataset_with_dataframe(
-    ds: xr.Dataset, dataframe: pd.DataFrame
+    ds: xr.Dataset, df: pd.DataFrame
 ) -> xr.Dataset:
     """
     Update the original dataset with new variables from the DataFrame.
@@ -240,12 +240,32 @@ def update_dataset_with_dataframe(
         wind_speed   (time) int64 10 12 15 11 9
     """
     # Convert DataFrame to xarray Dataset
-    dataset = dataframe.to_xarray()
+    dataset_new = df.to_xarray()
+
+    # Assume 'index' is the index of the variable you want to copy
+    var_name = list(ds.data_vars)[-1]
+
+    # Get the order of coordinates for the variable
+    coords_order = ds[var_name].dims
+
+    # Transpose dataset_new to match the order of ds
+    dataset_new = dataset_new.transpose(*coords_order)
 
     # Merge the original dataset with the new variables
-    updated_ds = xr.merge([ds, dataset])
+    # Get a list of all variable names that are not coordinates
+    var_list = [
+        var
+        for var in dataset_new.variables.keys()
+        if var not in dataset_new.coords
+    ]
 
-    return updated_ds
+    for var in var_list:
+        ds[var] = ds[var_name]
+        ds[var].values = dataset_new[var].values
+        ds[var].rio.write_crs(4326, inplace=True)
+    # updated_ds = xr.merge([ds, dataset])
+
+    return ds
 
 
 def slice_middle_portion(

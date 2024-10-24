@@ -9,7 +9,7 @@ using TensorFlow, a popular deep learning framework.
 
 # %%
 
-from typing import Optional
+from typing import List, Optional, Any
 
 import numpy as np
 import pandas as pd
@@ -24,7 +24,14 @@ from pydeepsar.models.layers import (
 def create_model_input_output(
     dataframe: pd.DataFrame,
     output: Optional[dict[str, str]] = None,
-) -> tuple[dict[str, int], dict[str, int]]:
+    input_columns: Optional[List[str]] = [
+        "geo_kz_ml",
+        "geo_thetainc_ml",
+        "geo_amp",
+        "geo_coh",
+        "geo_pha",
+    ],
+) -> tuple[dict[str, Any], dict[str, Any]]:
     """
     Create input X with z_repeated and z0_tensor.
 
@@ -58,6 +65,7 @@ def create_model_input_output(
     """
     # Copy the DataFrame to data
     data = dataframe.copy()
+    data["geo_kz_ml"] = np.abs(data["geo_kz_ml"])
 
     # Define z values
     # a_input = -500.0
@@ -78,17 +86,7 @@ def create_model_input_output(
 
     # Prepare inputs dictionary
     X = {
-        "features_n": np.vstack(
-            data[
-                [
-                    "geo_kz_ml",
-                    "geo_thetainc_ml",
-                    "geo_amp",
-                    "geo_coh",
-                    "geo_pha",
-                ]
-            ].values
-        ),
+        "features_n": np.vstack(data[input_columns].values),  # type: ignore
         # "z": z_repeated,
         "kappa_z": data["geo_kz_ml"].values[:, np.newaxis],
         "kappa_z_vol": data["geo_kz_ml"].values[:, np.newaxis],
