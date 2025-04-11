@@ -1,13 +1,14 @@
-# DeepSAR Python package
+# DeepSAR Python Package
 
-This Project aims to ...
+A Python package implementing a hybrid framework that combines physical modeling with data-driven techniques to correct DEM penetration bias in TanDEM-X InSAR data. This package is the official implementation of the methodology described in our paper "Hybrid Physical-ML Framework for Correcting DEM Penetration Bias in TanDEM-X Data over Greenland" (2024) and "Hybrid AI–Physical Modeling for Penetration Bias Correction in X-band InSAR DEMs: A Greenland Case Study" (2025).
 
-- Free software: GNU General Public License v3
-- Documentation: <https://islamalam.github.io/pydeepsar>
+## Key Features
 
-## Features
-
-TBD
+- Implementation of hybrid physical-ML models for DEM penetration bias correction
+- Support for different vertical scattering models (Exponential, Weibull)
+- Tools for handling TanDEM-X InSAR data
+- Evaluation framework for different training scenarios (Full, Interpolation, Extrapolation)
+- Comprehensive documentation and examples
 
 ## Credits
 
