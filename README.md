@@ -7,8 +7,7 @@ A Python package implementing a hybrid framework that combines physical modeling
 - Implementation of hybrid physical-ML models for DEM penetration bias correction
 - Support for different vertical scattering models (Exponential, Weibull)
 - Tools for handling TanDEM-X InSAR data
-- Evaluation framework for different training scenarios (Full, Interpolation, Extrapolation)
-- Comprehensive documentation and examples
+
 
 ## Credits
 
